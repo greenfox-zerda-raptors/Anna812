@@ -1,0 +1,11 @@
+body{
+  font-size: 30px;
+}
+
+div {
+  color: red;
+  background: yellow;
+  border: 5px solid black;
+  margin: 15px 120px;
+  padding: 25px;
+}
