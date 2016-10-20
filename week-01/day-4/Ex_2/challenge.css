@@ -1,0 +1,16 @@
+body{
+  font-size: 30px;
+}
+
+.big-div {
+  margin: 15px 70px;
+  border: 0;
+  background: green;
+}
+
+div {
+  color: blue;
+  background: yellow;
+  border: 5px solid black;
+  padding: 25px;
+}
