@@ -1,0 +1,21 @@
+div {
+  width: 15%;
+  border: 1px solid black;
+  padding: 30px;
+  font-size: 18px;
+  margin-top: 20px;
+  background: url(duck.png);
+  background-repeat: no-repeat;
+}
+
+#one {
+  background-position: left;
+}
+
+#two{
+  background-position: center;
+}
+
+#three{
+  background-position: right bottom;
+}
