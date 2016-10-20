@@ -1,0 +1,30 @@
+h1 {
+ color: blue;
+}
+
+h2 {
+  color: orange;
+}
+
+.h2-2 {
+  margin-bottom: 0em;
+  margin-top: 0em;
+}
+
+#square {
+  color: blue;
+  list-style-type: square;
+}
+
+#fruits {
+  color: black;
+  list-style-type: disc;
+}
+
+.blackie {
+  color: black;
+}
+
+span {
+  color: red;
+}
