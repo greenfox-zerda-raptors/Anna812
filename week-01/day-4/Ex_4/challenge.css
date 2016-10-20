@@ -1,0 +1,17 @@
+h1, h2 {
+ color: green;
+}
+
+span {
+  color: red;
+}
+
+#set {
+  font-style: italic;
+  color: blue;
+}
+
+.h2-2 {
+  margin-bottom: 0em;
+  margin-top: 0em;
+}
