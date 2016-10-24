@@ -1,0 +1,14 @@
+.content1, .content2 {
+  text-align: justify;
+  margin: 10px 40%;
+  border-bottom: 2px solid black;
+  padding: 2% 0px;
+}
+
+.content1 img {
+  float: left;
+}
+
+.content2 img {
+  float: right;
+}
