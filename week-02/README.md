@@ -1,1 +1,1 @@
-folder for week 02 practice
+folder for week2 practice and project
