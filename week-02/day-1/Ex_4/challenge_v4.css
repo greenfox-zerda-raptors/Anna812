@@ -1,0 +1,67 @@
+.content1, .content2 {
+  text-align: justify;
+  margin: 10px 30%;
+  border-bottom: 2px solid black;
+  padding: 2% 0px;
+}
+
+.content1 img {
+  float: left;
+}
+
+.content2 img {
+  float: right;
+}
+
+.warning {
+   width: 280px;
+   min-height: 180px;
+   border: 2px solid black;
+   border-radius: 15px;
+   position: absolute;
+   top: 50px;
+   left: 500px;
+  background: white;
+ }
+
+.wow {
+  color: red;
+  font-weight: bold;
+
+  }
+.warning p {
+  padding: 10px 20px 10px 20px;
+  margin: 0px;
+}
+
+ hr {
+   margin: 0;
+   border: 1px solid black;
+ }
+
+.warning-text {
+   width: 240px;
+   height: 50px;
+   padding: 15px 10px 7px;
+ }
+
+.button p {
+  background-color: grey;
+  border-radius: 10px;
+  height: 20px;
+  float: right;
+  padding: 3px;
+  margin-right: 15px;
+  margin-top: 20px;
+ }
+.x p {
+  background: black;
+  color: white;
+  width: 15px;
+  border-radius: 15px;
+  padding: 0px;
+  position: absolute;
+  text-align: center;
+  top: -10;
+  right: 20;
+}
