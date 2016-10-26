@@ -1,1 +1,1 @@
-practice on floating elements and felx-box
+practice on floating elements and flex-box
