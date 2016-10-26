@@ -1,0 +1,41 @@
+table {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  border-collapse: collapse;
+  text-align: left;
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  font-weight: normal;
+  padding: 15px;
+  width: 200px;
+}
+
+th {
+  background: black;
+  color: white;
+  border-bottom: 2px solid #ccc;
+  font-size: 16px;
+}
+
+td {
+  color: grey;
+}
+
+tr:nth-child(even) {
+  background: #eeebeb;
+}
+
+tr:nth-child(odd) {
+  background: white;
+}
+
+.blue_back {
+  background: #1ec8f9;
+  width: 470px;
+  padding: 40px
+}

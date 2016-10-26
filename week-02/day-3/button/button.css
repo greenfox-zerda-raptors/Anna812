@@ -1,0 +1,43 @@
+.button {
+  padding: 15px 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  box-shadow: 0px 0px 5px 1px #ccc;
+  margin-right: 5px;
+}
+
+.white {
+  background: white;
+  color: grey;
+  border: 0;
+  background: -webkit-linear-gradient(top, #fff 0%, #ccc 100%);
+}
+
+.blue {
+  background: blue;
+  color: white;
+  background: #1ec8f9;
+  border: 1px solid #1798bd;
+  background: -webkit-linear-gradient(top, #1ec8f9 0%, #1798bd 100%);
+}
+
+.green {
+  background: green;
+  color: white;
+  background: #a5f201;
+  border: 1px solid #7cb600;
+  background: -webkit-linear-gradient(top, #a5f201 0%, #7cb600 100%)
+}
+
+.white:hover {
+  background: -webkit-linear-gradient(top, #ccc 0%, #fff 100%);
+}
+
+.blue:hover {
+  background: -webkit-linear-gradient(top, #1798bd 0%, #1ec8f9 100%);
+}
+
+.green:hover {
+  background: -webkit-linear-gradient(top, #7cb600 0%, #a5f201 100%);
+}
