@@ -1,0 +1,138 @@
+form {
+  margin: 0 25%;
+  background: RGBA(221, 214, 204, 1.00);
+  font-family: Tahoma, Geneva, sans-serif;
+  padding: 25px 70px;
+  color: RGBA(77, 62, 98, 1.00);
+}
+
+.big_title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.subtitle, .terms{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.right, .name, .b_date{
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.title {
+  background-color: RGBA(149, 138, 151, 1.00);
+  width: 220px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+  margin: 0px 0px 5px 0px;
+  padding: 10px;
+}
+
+.title p, .subtitle {
+  margin: 0px;
+}
+
+.top_part {
+  height: 350px;
+  display: flex;
+  align-items: stretch;
+}
+
+.side {
+  margin-right: 20px;
+}
+
+.left, .right {
+  display: block;
+}
+
+input, label, select{
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 5px;
+}
+
+.b_date {
+  position: relative;
+ }
+
+.gender {
+  position: absolute;
+  left: 120px;
+  top: 0px;
+ }
+
+/*.gender input {
+    display: inline-block;
+}
+
+.gender label {
+  display: inline;
+}*/
+
+.checkbox {
+  display: flex;
+  font-size: 12px;
+ }
+
+.checkbox_list {
+  display: block;
+  margin-right: 40px;
+}
+
+.help {
+  font-size: 10px;
+  color: grey;
+  opacity: 0.8;
+ }
+
+input[type="url"], input[type="email"], input[type="text"]{
+  width: 225px;
+  padding: 5px;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: RGBA(149, 138, 151, 0.8);
+ }
+
+input[type="number"] {
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: RGBA(149, 138, 151, 0.8);
+}
+
+select {
+  width: 240px;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.bottom_part {
+  display: block;
+ }
+
+ textarea {
+  width: 100%;
+  border-radius: 2px;
+  font-family: Tahoma, Geneva, sans-serif;
+  margin-top: 10px;
+ }
+
+.intro label, .upload label{
+  font-weight: bold;
+  font-size: 12px;
+ }
+
+a {
+ color: grey;
+}
