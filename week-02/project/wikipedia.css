@@ -1,12 +1,15 @@
+@font-face {
+  font-family: LinLibertine_R.ttf;
+  src: url(LinLibertine_R.ttf);
+  }
+
 body {
-  height: 100vh;
   margin: 0px;
   font-family: sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: #0645ad;
 }
 
 nav {
@@ -18,18 +21,24 @@ nav {
 aside {
   width: 160px;
   height: auto;
-  background: #f6f6f6;
+  background: linear-gradient(#ffffff 3%,#f6f6f6 7%);
   float: left;
 }
 
 main{
-  height: 100%;
   background: #fff;
   margin-left: 160px;
   border-left: 1px solid #a7d7f9;
   border-bottom: 1px solid #a7d7f9;
   overflow: hidden;
   color: #252525;
+  padding: 0px 25px;
+}
+
+img {
+  width: 110px;
+  margin-left: 25px;
+  margin-top: 10px;
 }
 
 aside, nav{
@@ -54,7 +63,7 @@ aside h4 {
 }
 
 .navigation ul{
-  margin-top: 10px;
+  margin-top: 30px;
   -webkit-padding-start: 20px;
 }
 
@@ -70,9 +79,9 @@ hr {
 
 /*end of sidebar CSS*/
 
-nav ul li {
+.profile ul li {
   display: inline;
-  margin: 5px;
+  margin: 0px 5px;
 }
 
 .left_tab {
@@ -80,16 +89,181 @@ nav ul li {
   float: left;
 }
 
-.right_tab, .profile {
+.profile {
   float: right;
-  margin: 10px 10px;
+  margin: 10px 10px 15px 5px;
 }
 
-input[type="search"]{
-  width: 300px;
-  padding: 0.2em 0 0.2em 0.2em
+.right_tab, .searchbar {
+  float: right;
+  margin: 10px 10px 0px 0px;
 }
 
 .tab {
-  margin-top: 20px;
+  margin-top: 17px;
+  font-size: 13px;
+  height: 20px;
+}
+
+.tab li {
+  display: inline;
+  float: left;
+}
+
+.tab a {
+  padding: 10px 5px;
+  height: 20px;
+  border-left: 1px solid #a7d7f9;
+}
+
+.tab li:last-child a {
+  border-right: 1px solid #a7d7f9;
+}
+
+.searchbar input {
+  width: 290px;
+  padding: 0.2em 0 0.2em 0.2em
+}
+
+/*end of navigation CSS*/
+
+table {
+  color: #000;
+  border: 1px solid #aaa;
+  width: 220px;
+  float: right;
+  background: white;
+  margin-left: 15px;
+}
+
+tbody td:first-child {
+  font-weight: bold;
+}
+
+thead td:last-child {
+  text-align: center;
+  padding-top: 0px;
+}
+
+table img {
+  margin: 0px 20px;
+  height: 275px;
+  width: 220px;
+}
+
+td {
+  vertical-align: top;
+  text-align: left;
+  font-size: 12px;
+  padding: 5px 5px;
+}
+
+/*end of table CSS*/
+
+main:before {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+h1, h2, h3 {
+  color: #000;
+  padding-bottom: 0.1em;
+  margin: 20px 0px 5px;
+}
+
+h1, h2 {
+  font-family: LinLibertine_R;
+  font-weight: normal;
+  border-bottom: 1px solid #aaa;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+main p, main ul li, blockquote {
+  font-size: 15px;
+  line-height: 1.6em;
+}
+
+p {
+  margin: 5px 0px;
+}
+
+.subtitle {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.direction {
+  font-style: italic;
+  margin: 5px 0px 7px 20px;
+}
+
+.content {
+  background: #f9f9f9;
+  border: 1px solid #aaa;
+  font-size: 18px;
+  width: 120px;
+}
+
+.content ol {
+    list-style-type: none;
+    font-weight: normal;
+    font-size: 13px;
+    padding-left: 7px;
+    line-height: 1.8em;
+}
+
+.content ol ol {
+  padding-left: 25px;
+}
+
+h5 {
+  color: #000;
+  font-size: 13px;
+  margin: 10px 25px 5px;
+}
+
+.picture {
+  border: 1px solid #ccc;
+  padding: 3px;
+  background-color: #f9f9f9;
+  width: 220px;
+  height: auto;
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.picture p {
+  font-size: 12px;
+  margin: 0px 5px;
+}
+
+.picture img {
+  margin: 3px;
+  width: 97%;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li:before {
+  content: '\2022 ';
+  color: #008080;
+  padding-right: 10px;
+  margin-left: -1em;
+  /*font-size: 20px;*/
 }
