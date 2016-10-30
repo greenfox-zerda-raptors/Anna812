@@ -10,7 +10,18 @@ body {
 
 a {
   text-decoration: none;
+  color: #0645ad;
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
+sup {
+  color: #0645ad;
+}
+
+/*end of all item related CSS*/
 
 nav {
   height: 80px;
@@ -116,6 +127,13 @@ hr {
   border-left: 1px solid #a7d7f9;
 }
 
+.tab a:active {
+  background: white;
+  border-bottom: 3px solid white;
+  color: currentColor;
+  text-decoration: underline;
+}
+
 .tab li:last-child a {
   border-right: 1px solid #a7d7f9;
 }
@@ -159,12 +177,6 @@ td {
 }
 
 /*end of table CSS*/
-
-main:before {
-  display: block;
-  content: "";
-  clear: both;
-}
 
 h1, h2, h3 {
   color: #000;
@@ -256,14 +268,20 @@ h5 {
   width: 97%;
 }
 
-ul {
+main ul {
   list-style: none;
 }
 
-ul li:before {
-  content: '\2022 ';
+main ul li:before {
+  content: '\2022';
   color: #008080;
   padding-right: 10px;
   margin-left: -1em;
-  /*font-size: 20px;*/
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.citation {
+  font-style: normal;
+  margin-left: 70px;
 }
