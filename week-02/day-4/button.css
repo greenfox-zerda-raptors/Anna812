@@ -1,0 +1,55 @@
+body {
+  position: relative;
+  margin: 0;
+  background-color: #333;
+}
+
+.hover_text {
+  color: #333;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 26px;
+  letter-spacing: 0.2em;
+  height: 170px;
+  text-align: center;
+  padding-top: 120px;
+  transform: rotate(-45deg);
+  transition-duration: 0.5s;
+}
+
+.hover_text:hover {
+  color: #f95e25;
+  transition-duration: 0.5s;
+}
+
+.background {
+  background: white;
+  border: 1px solid white;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  transform: rotateZ(45deg);
+  position: absolute;
+  top: 109px;
+  left: 139px;
+}
+
+.red_line {
+  border: 4px solid #f95e25;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  transition-duration: 0.5s;
+  position: absolute;
+  top: -6px;
+  left: -6px;
+}
+
+.red_line:hover {
+  border: 4px solid #f95e25;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  transform: rotateZ(45deg);
+  transition-duration: 0.5s;
+}
