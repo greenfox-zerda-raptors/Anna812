@@ -11,13 +11,34 @@ public class Workshop35 {
         // 12345**
         // 123456*
         // 1234567
-        String s = "******";
+
+        String s = "*******";
         for (int x = 0; x < 7; x++){
-            String newS = s.substring(0,x)+(x+1) + s.substring(x);
-            System.out.println(newS);
+            s = s.substring(0,x) + (x+1) + s.substring(x+1);
+            System.out.println(s);
         }
+
+//        for( int i = 1; i <= 7; i++){
+//
+//            for(int j = 1; j <= i; j++){
+//                System.out.print(j);
+//            }
+//
+//            for(int k=1; k <= 7-i; k++)
+//                System.out.print("*");
+//
+//            System.out.println();
+//        }
+
+
+//        int y = 0;
+//        String str = "*******";
+//        do {
+//            str = str.substring(0,y) + (y+1) + str.substring(y+1);
+//            System.out.println (str);
+//            y++;
+//        } while (y < 7);
     }
 }
 
-//    char[] arrayChar = new char[7];
 

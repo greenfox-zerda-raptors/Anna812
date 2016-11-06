@@ -24,3 +24,10 @@ public class Workshop34 {
         }
     }
 }
+// String s = "";
+// for (int a = 1; a <= 100; a++){
+// s+= i % 3 == 0 ? "Fizz" : "";
+// s+= i % 5 == 0 ? "Buzz" : "";
+// s+= s.length() == 0 ? i : "";
+// System.out.println(s);
+//}
