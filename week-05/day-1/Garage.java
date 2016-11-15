@@ -7,10 +7,11 @@ import java.util.Random;
  */
 
 public class Garage {
-    public ArrayList<Car> garage;
+
+    public ArrayList<Car> storedCars = new ArrayList<>(5);
 
     public Garage(){
-        ArrayList<Car> garage = new ArrayList<>(getCars());
+        getCars();
     }
 
     private ArrayList <String> colors = new ArrayList<>(Arrays.asList("white", "blue", "red", "silver", "black",
@@ -20,18 +21,10 @@ public class Garage {
     private ArrayList <Integer> engineSizes = new ArrayList<>(Arrays.asList(1100, 1400, 1600, 1800, 2500));
     private Random random = new Random();
 
-    public ArrayList getCars() {
-
-        ArrayList <Car> lsCars = new ArrayList<>(5);
-
+    public void getCars() {
         for (int i = 0; i < 5; i++) {
-            int color = random.nextInt(7);
-            int make = random.nextInt(8);
-            int engineSize = random.nextInt(5);
-            Car myCar = new Car(makes.get(make), colors.get(color), engineSizes.get(engineSize));
-            lsCars.add(myCar);
+            addRandomCar();
         }
-        return lsCars;
     }
 
     public void addRandomCar() {
@@ -39,10 +32,10 @@ public class Garage {
         int make = random.nextInt(8);
         int engineSize = random.nextInt(5);
         Car myCar = new Car(makes.get(make), colors.get(color), engineSizes.get(engineSize));
-        garage.add(garage.size(), myCar);
+        storedCars.add(storedCars.size(), myCar);
     }
 
     public void addCar (Car thisCar) {
-        garage.add(garage.size(), thisCar);
+        storedCars.add(storedCars.size(), thisCar);
     }
 }

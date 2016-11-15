@@ -76,7 +76,7 @@ public class Car {
     }
 
     public Car(int sizeEngine, int kmOdometer) {
-        this ("Mazda", "red", sizeEngine, kmOdometer);;
+        this ("Mazda", "red", sizeEngine, kmOdometer);
     }
 
     public Car(String typeCar, String color, int sizeEngine) {
