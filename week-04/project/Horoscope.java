@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -17,8 +18,8 @@ public class Horoscope {
             "are all based on solid, scientific, documented evidence, so you would have\n" +
             "to be some kind of moron not to realize that every single one of them is absolutely true.\n";
 
-    static ArrayList<String> zodiac = new ArrayList<>(Arrays.asList("Aquarius", "Pisces", "Aries", "Taurus",
-            "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"));
+    static ArrayList<String> zodiac = new ArrayList<>(Arrays.asList("aquarius", "pisces", "aries", "taurus",
+            "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn"));
 
     static ArrayList<String> bsArray = new ArrayList<>();
 
@@ -44,7 +45,7 @@ public class Horoscope {
     }
 
     public static void checkIfValid(String sign) throws Exception {
-        if (!zodiac.contains(sign)) {
+        if (!zodiac.contains(sign.toLowerCase())) {
             throw new Exception("That is not a sign, my darling. Please try again.");
         }
     }
