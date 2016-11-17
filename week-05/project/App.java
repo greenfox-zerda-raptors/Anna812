@@ -1,6 +1,5 @@
 package com.ToDoApp.AnnaDalnoki;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,13 +13,15 @@ public class App {
         UserInputHandling.help();
 
         ToDoList tasks = new ToDoList();
-        tasks.add("kaja");
-        tasks.add("pia");
-        tasks.add("pihenes");
+        tasks.loadFromFile();
 
         while (userInput.hasNext()){
             String input = userInput.nextLine();
-            UserInputHandling.commandInput(input);
+            if (input.equals("exit") || input.equals("e")) {
+                break;
+            }
+            UserInputHandling.commandInput(input, tasks);
         }
+        tasks.writeToFile();
     }
 }

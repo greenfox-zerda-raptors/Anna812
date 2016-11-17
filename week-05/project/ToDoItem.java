@@ -10,8 +10,20 @@ public class ToDoItem {
 
 
     public ToDoItem(String content) {
+        this(content, false);
+    }
+
+    public ToDoItem(String content, boolean complete) {
         this.content = content;
-        this.complete = false;
+        this.complete = complete;
+    }
+
+    public boolean getComplete() {
+        return complete;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public void setComplete(boolean complete) {

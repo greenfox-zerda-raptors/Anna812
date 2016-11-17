@@ -8,40 +8,56 @@ import java.util.Arrays;
 abstract public class UserInputHandling {
 
     public static void help() {
-        String[][] introText = new String[10][2];
-        introText[0] = new String[]{"list", "Lists all the tasks"};
-        introText[1] = new String[]{"l", "shorthand for list"};
-        introText[2] = new String[]{"add", "Adds a new task"};
-        introText[3] = new String[]{"a", "shorthand for add"};
-        introText[4] = new String[]{"remove", "Removes a task"};
-        introText[5] = new String[]{"r", "shorthand for remove"};
-        introText[6] = new String[]{"complete", "Completes a task"};
-        introText[7] = new String[]{"c", "shorthand for complete"};
-        introText[8] = new String[]{"help", "Print out this list again"};
-        introText[9] = new String[]{"h", "shorthand for help"};
 
-        for (String[] row : introText) {
-            System.out.println(Arrays.asList(row));
+        String[] intro = new String[]{"list", "Lists all the tasks", "l", "shorthand for list", "add", "Adds a new task",
+                "a", "shorthand for add", "remove", "Removes a task", "r", "shorthand for remove", "complete", "Completes a task",
+                "c", "shorthand for complete", "help", "Print out this list again", "h", "shorthand for help"};
+
+        for (int i = 0; i < intro.length; i+=2) {
+            System.out.printf("%-10s %s\n", intro[i], intro[i+1]);
         }
     }
 
-    public static void commandInput(String input){
-        if (input.equalsIgnoreCase("list") || input.equalsIgnoreCase("l")) {
-            ToDoList.list();
-        } else if (input.contains("add") || input.contains("a")) {
-            String[] a = input.split("\\s+");
-            String b = a[1];
-            ToDoList.add(b);
-        } else if (input.contains("remove") || input.contains("r")) {
-            String[] a = input.split("\\s+");
-            int b = Integer.parseInt(a[1]);
-            ToDoList.remove(b);
-        } else if (input.contains("complete") || input.contains("c")) {
-            String[] a = input.split("\\s+");
-            int b = Integer.parseInt(a[1]);
-            ToDoList.makeCompleted(b);
-        } else if (input.contains("help") || input.contains("h")) {
+    public static void commandInput(String input, ToDoList tl){
+
+        String[] a = input.split("\\s+");
+        int b;
+
+        if (a[0].equals("remove") || a[0].equals("r")) {
+            try {
+                b = Integer.parseInt(a[1]);
+                tl.remove(b);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Unable to remove: No index is provided");
+            } catch (NumberFormatException e) {
+                System.out.println("Unable to remove: Index is not a number");
+            }
+
+        } else if (a[0].equals("complete") || a[0].equals("c")) {
+            try{
+                b = Integer.parseInt(a[1]);
+                tl.makeCompleted(b);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Unable to complete: No index is provided");
+            } catch (NumberFormatException e) {
+                System.out.println("Unable to complete: Index is not a number");
+            }
+
+        } else if (a[0].equals("list") || a[0].equals("l")) {
+            tl.list();
+
+        } else if (a[0].equals("add") || a[0].equals("a")) {
+            String str = "";
+            for (int i = 1; i < a.length; i++) {
+                str = str + " " + a[i];
+            }
+            ToDoItem temp = new ToDoItem(str);
+            tl.add(temp);
+
+        } else if (a[0].equals("help") || a[0].equals("h")) {
             UserInputHandling.help();
+        } else {
+            System.out.println("Unsupported argument");
         }
     }
 }
