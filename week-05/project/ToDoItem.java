@@ -8,13 +8,14 @@ public class ToDoItem {
     public String content;
     public boolean complete;
 
+
     public ToDoItem(String content) {
         this.content = content;
         this.complete = false;
     }
 
-    public boolean isComplete(ToDoItem toDoItem) {
-        return complete = true;
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 
     @Override

@@ -24,4 +24,9 @@ public class ToDoList {
             System.out.println(i + 1 + item.toString());
         }
     }
+
+    public void makeCompleted (int i) {
+        ToDoItem item = ls.get(i - 1);
+        item.setComplete(true);
+    }
 }
