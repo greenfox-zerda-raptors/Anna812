@@ -21,8 +21,8 @@ public class ToDoItem {
     @Override
     public String toString() {
         if (complete == false) {
-            return String.format("[ ] - %s", content);
+            return String.format("[ ] %s", content);
         } else
-            return String.format("[X] - %s", content);
+            return String.format("[X] %s", content);
     }
 }
