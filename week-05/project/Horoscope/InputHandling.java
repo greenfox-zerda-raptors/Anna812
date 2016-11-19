@@ -21,21 +21,14 @@ abstract public class InputHandling {
     public static boolean isValid(String sign) {
         ArrayList<String> zodiac = new ArrayList<>(Arrays.asList("aquarius", "pisces", "aries", "taurus",
                 "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn"));
-        if (zodiac.contains(sign.toLowerCase())) {
-            return true;
-        } else {
-            return false;
-        }
+            return zodiac.contains(sign.toLowerCase());
     }
 
-    public static void commandReading(String input) {
+    public static void commandReading(String input, DestinyList destinyList) {
         if (InputHandling.isValid(input)){
-            Horoscope newHoroscope = new Horoscope();
-            System.out.println(newHoroscope.getContent());
+            System.out.println(destinyList.pickingDestiny());
         } else {
             System.out.println("That is not a sign, my darling. Please try again.");
         }
     }
-
-
 }

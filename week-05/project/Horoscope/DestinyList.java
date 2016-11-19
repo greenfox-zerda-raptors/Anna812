@@ -3,7 +3,6 @@ package com.horoscopeGenerator.AnnaDalnoki;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -11,13 +10,11 @@ import java.util.Random;
  */
 public class DestinyList {
 
-    public ArrayList<String> ls;
+    public ArrayList<String> ls = new ArrayList<>();
 
     public DestinyList() {
-        ls = new ArrayList<>();
         loadDestiny();
     }
-
 
     public void loadDestiny() {
         try {

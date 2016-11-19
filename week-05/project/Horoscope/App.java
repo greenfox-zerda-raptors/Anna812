@@ -9,6 +9,7 @@ public class App {
     public static void main(String[] args) {
 
         Scanner userInput = new Scanner(System.in);
+        DestinyList dl = new DestinyList();
 
         InputHandling.print();
         String prompt = "What is your sign? (or type exit to quit)";
@@ -21,7 +22,7 @@ public class App {
                 System.out.println("May the odds ever be in your favour!");
                 break;
             } else {
-                InputHandling.commandReading(sign);
+                InputHandling.commandReading(sign, dl);
             }
             System.out.println(prompt);
         }
