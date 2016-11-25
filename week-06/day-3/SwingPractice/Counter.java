@@ -43,7 +43,6 @@ public class Counter extends JFrame{
     }
 
     private class buttonCounter implements ActionListener{
-
         @Override
         public void actionPerformed(ActionEvent e) {
             clicks ++;
