@@ -5,14 +5,14 @@ import java.awt.geom.Point2D;
 /**
  * Created by Anna812 on 11/25/2016.
  */
-public class FractalsV2 extends JPanel{
+public class FractalsAlmost extends JPanel{
 
     private Point2D p1, p2, p3, p4, p5, p6;
     private int x1, x2, x3, y1, y2, y3;
     private int counter = 0;
     private Dimension dim;
 
-    public FractalsV2() {
+    public FractalsAlmost() {
         dim = Toolkit.getDefaultToolkit().getScreenSize();
         JFrame frame = new JFrame();
         frame.setTitle("My Image App");
@@ -54,7 +54,7 @@ public class FractalsV2 extends JPanel{
             drawFractals(graphics, depth, p4, p2, p5);
             drawFractals(graphics, depth, p6, p5, p3);
         }
-}
+    }
 
     public void paintComponent (Graphics g) {
         drawFractals(g, 10, p1, p2, p3);
@@ -64,7 +64,7 @@ public class FractalsV2 extends JPanel{
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new FractalsV2();
+                new FractalsAlmost();
             }
         });
     }
