@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Area {
     protected ArrayList<GameObject> gameObjectList;
     private int [][] map = new int[][] {
-            {0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -36,6 +36,12 @@ public class Area {
     }
 
     public boolean isFloor(int posX, int posY) {
-        return map[posX][posY] == 0;
+        if (isValidPosition(posX) && isValidPosition(posY)){
+            return map[posX][posY] == 0;
+        }
+    }
+
+    public boolean isValidPosition (int position) {
+        return position < map.length + 1 && position >= 0;
     }
 }
