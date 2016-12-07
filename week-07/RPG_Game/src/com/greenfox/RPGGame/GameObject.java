@@ -12,14 +12,16 @@ import java.io.IOException;
 public class GameObject {
     private BufferedImage image;
     protected int posX, posY;
-    protected String filename;
 
     public GameObject(String filename, int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
-        this.filename = filename;
+        drawImageOfObject(filename);
+    }
+
+    public void drawImageOfObject(String filename) {
         try {
-            image = ImageIO.read(new File(this.filename));
+            image = ImageIO.read(new File(filename));
         } catch (IOException e) {
             e.printStackTrace();
         }

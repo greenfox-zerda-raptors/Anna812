@@ -12,28 +12,28 @@ public class PlayableCharacters extends GameObject{
     public void moveLeft(Area area) {
         if (area.isFloor(posX - 1, posY)) {
             posX -= 1;
-            filename = "hero-left.png";
+            drawImageOfObject("hero-left.png");
         }
     }
 
      public void moveRight(Area area) {
          if (area.isFloor(posX + 1, posY)) {
              posX += 1;
-             filename = "hero-right.png";
+             drawImageOfObject("hero-right.png");
          }
      }
 
     public void moveUp(Area area) {
         if (area.isFloor(posX, posY - 1)) {
             posY -= 1;
-            filename = "hero-up.png";
+            drawImageOfObject("hero-up.png");
         }
     }
 
     public void moveDown(Area area) {
         if (area.isFloor(posX, posY + 1)) {
             posY += 1;
-            filename = "hero-down.png";
+            drawImageOfObject("hero-down.png");
         }
     }
 
