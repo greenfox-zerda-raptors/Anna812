@@ -8,11 +8,11 @@ import javax.swing.*;
 public class GameApp {
 
     public static void main(String[] args) {
-//        SwingUtilities.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-                new Area();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Board();
         }
-//        });
-//    }
+        });
+    }
 }

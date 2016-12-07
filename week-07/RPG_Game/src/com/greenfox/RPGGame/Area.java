@@ -1,37 +1,37 @@
 package com.greenfox.RPGGame;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by Anna812 on 12/5/2016.
+ * Created by Anna on 12/7/2016.
  */
-public class Area extends JComponent {
-
-    private ArrayList<Tile> tileList;
+public class Area {
+    protected ArrayList<GameObject> gameObjectList;
+    private int [][] map = new int[][] {
+            {0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
 
     public Area() {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(this);
-        frame.setVisible(true);
-        setPreferredSize(new Dimension(720, 720));
-        frame.pack();
-        tileList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 11; j++) {
-                Tile floor = new Tile("floor.png", i * 72, j * 72);
-                tileList.add(floor);
+        gameObjectList = new ArrayList<>();
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if(map[j][i] == 0) {
+                    GameObject floor = new GameObject("floor.png", i, j);
+                    gameObjectList.add(floor);
+                } else {
+                    GameObject floor = new GameObject("wall.png", i, j);
+                    gameObjectList.add(floor);
+                }
             }
         }
     }
-
-    @Override
-    public void paint(Graphics graphics) {
-        for(Tile temp : tileList) {
-                temp.draw(graphics);
-        }
-    }
 }
-
