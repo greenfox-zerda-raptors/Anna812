@@ -9,15 +9,15 @@ public class Area {
     protected ArrayList<GameObject> gameObjectList;
     private int [][] map = new int[][] {
             {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+            {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+            {1, 1, 0, 0, 0, 1, 0, 0, 0, 0},
+            {1, 0, 0, 1, 1, 0, 0, 0, 0, 1},
+            {1, 0, 0, 1, 0, 0, 0, 1, 1, 1},
+            {0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+            {0, 0,1, 1, 0, 0, 1, 0, 0, 1},
+            {0, 1, 0, 0, 0, 0, 1, 1, 0, 0},
+            {1, 0, 0, 0, 1, 0, 0, 0, 0, 0}
     };
 
     public Area() {
@@ -37,11 +37,12 @@ public class Area {
 
     public boolean isFloor(int posX, int posY) {
         if (isValidPosition(posX) && isValidPosition(posY)){
-            return map[posX][posY] == 0;
+            return map[posY][posX] == 0;
         }
+        return false;
     }
 
     public boolean isValidPosition (int position) {
-        return position < map.length + 1 && position >= 0;
+        return position < map.length && position >= 0;
     }
 }
