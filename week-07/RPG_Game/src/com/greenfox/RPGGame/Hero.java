@@ -6,6 +6,6 @@ package com.greenfox.RPGGame;
 public class Hero extends Character {
 
     public Hero(int posX, int posY) {
-        super("hero.png", posX, posY);
+        super("hero-down.png", posX, posY);
     }
 }

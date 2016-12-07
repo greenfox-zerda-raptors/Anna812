@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * Created by Anna812 on 12/5/2016.
  */
 public class Board extends JComponent {
+    private Area area;
+    private Hero hero;
 
     public Board() {
         JFrame frame = new JFrame();
@@ -17,14 +19,16 @@ public class Board extends JComponent {
         setPreferredSize(new Dimension(720, 720));
         frame.pack();
         repaint();
+        area = new Area();
+        hero = new Hero(0, 0);
     }
 
     @Override
     public void paint(Graphics graphics) {
-        Area area = new Area();
         for(GameObject temp : area.gameObjectList) {
                 temp.draw(graphics);
         }
+        hero.draw(graphics);
     }
 }
 

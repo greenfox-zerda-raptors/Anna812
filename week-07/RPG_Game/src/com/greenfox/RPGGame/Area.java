@@ -34,4 +34,8 @@ public class Area {
             }
         }
     }
+
+    public boolean isFloor(int posX, int posY) {
+        return map[posX][posY] == 0;
+    }
 }
