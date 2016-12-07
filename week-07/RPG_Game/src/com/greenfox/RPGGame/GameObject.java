@@ -9,9 +9,10 @@ import java.io.IOException;
 /**
  * Created by Anna812 on 12/5/2016.
  */
-public class GameObject {
+public abstract class GameObject {
     private BufferedImage image;
-    protected int posX, posY;
+    protected int posX;
+    protected int posY;
 
     public GameObject(String filename, int posX, int posY) {
         this.posX = posX;
