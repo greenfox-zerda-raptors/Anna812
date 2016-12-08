@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by Anna812 on 12/5/2016.
  */
-public  abstract class PlayableCharacters extends GameObject{
+public abstract class PlayableCharacters extends GameObject{
 
     protected int level;
     protected int HP, DP, SP;
@@ -13,11 +13,14 @@ public  abstract class PlayableCharacters extends GameObject{
 
     public PlayableCharacters(String filename, int posX, int posY) {
         super(filename, posX, posY);
-        level = 1;
     }
 
     @Override
     public String toString() {
         return String.format("(Level %d) HP: *d/10 | DP: %d | SP: %d", level, HP, DP, SP);
+    }
+
+    public boolean isPositionTaken(int posX, int posY) {
+        return this.posX == posX && this.posY == posY;
     }
 }
