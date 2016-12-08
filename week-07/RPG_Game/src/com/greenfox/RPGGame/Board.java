@@ -21,7 +21,7 @@ public class Board extends JComponent implements KeyListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(this);
         frame.setVisible(true);
-        setPreferredSize(new Dimension(720, 720));
+        setPreferredSize(new Dimension(720, 910));
         frame.pack();
         repaint();
         frame.addKeyListener(this);
@@ -44,9 +44,22 @@ public class Board extends JComponent implements KeyListener{
             temp.draw(graphics);
         }
         hero.draw(graphics);
+
+        graphics.setColor(Color.LIGHT_GRAY);
+        graphics.fillRect(0, 720, 720, 910);
+
+        graphics.setColor(Color.BLACK);
+        graphics.setFont(new Font("Arial", Font.BOLD, 16));
+        graphics.drawString(hero.toString(), 5, 740);
+
+        for (int i = 0; i < enemies.size(); i++) {
+            if (enemies.get(i).isAlive()) {
+                graphics.drawString(enemies.get(i).toString(), 5, 760 + i * 20);
+            }
+        }
     }
 
-    public int[] createValidPosition() {
+    public int[] createValidPosition(){
         Random random = new Random();
         int[] validPosition = new int[2];
         int posX = -1;
