@@ -26,10 +26,10 @@ public class Area {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if(map[i][j] == 0) {
-                    Floor floor = new Floor(j ,i);
+                    GameObject floor = new GameObject("floor.png", j ,i);
                     gameObjectList.add(floor);
                 } else {
-                    Wall wall = new Wall(j, i);
+                    GameObject wall = new GameObject("wall.png", j, i);
                     gameObjectList.add(wall);
                 }
             }
