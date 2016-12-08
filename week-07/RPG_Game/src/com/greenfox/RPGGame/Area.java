@@ -26,7 +26,7 @@ public class Area {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if(map[i][j] == 0) {
-                    GameObject floor = new GameObject("floor.png", j ,i);
+                    GameObject floor = new GameObject("floor.png", j, i);
                     gameObjectList.add(floor);
                 } else {
                     GameObject wall = new GameObject("wall.png", j, i);
@@ -36,23 +36,6 @@ public class Area {
         }
     }
 
-    public int[] createValidPosition() {
-        Random random = new Random();
-        int[] validPosition = new int[2];
-        int posX = 0;
-        int posY = 0;
-        boolean isValidPosition = false;
-
-        while(!isValidPosition) {
-            posX = random.nextInt(10);
-            posY = random.nextInt(10);
-            isValidPosition = isFloor(posX, posY);
-        }
-        validPosition[0] = posX;
-        validPosition[1] = posY;
-
-        return validPosition;
-    }
 
     public boolean isFloor(int posX, int posY) {
         if (isValidPosition(posX) && isValidPosition(posY)){
