@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Anna812 on 12/5/2016.
@@ -14,10 +13,9 @@ public class Board extends JComponent implements KeyListener{
     private Area area;
     private Hero hero;
     private ArrayList<Skeleton> skeletons;
+    private Boss boss;
 
-    protected Random random = new Random();
-
-    public Board() {
+    Board() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(this);
@@ -29,35 +27,10 @@ public class Board extends JComponent implements KeyListener{
 
         area = new Area();
         hero = new Hero("hero-down.png",0, 0);
-        createAnyNumberOfSkeletons();
-    }
+        skeletons = Skeleton.createAnyNumberOfSkeletons(area);
 
-    private ArrayList<Skeleton> createAnyNumberOfSkeletons() {
-        skeletons = new ArrayList<>();
-        for(int i = 0; i < random.nextInt(((7 - 3) + 1) + 3); i++) {
-            int[] temp = createValidPosition();
-            Skeleton skeleton =  new Skeleton(temp[0], temp[1]);
-            skeletons.add(skeleton);
-        }
-        return skeletons;
-    }
-
-    private int[] createValidPosition() {
-
-        int[] validPosition = new int[2];
-        int posX = 0;
-        int posY = 0;
-        boolean isValidPosition = false;
-
-        while(!isValidPosition) {
-            posX = random.nextInt(10);
-            posY = random.nextInt(10);
-            isValidPosition = area.isFloor(posX, posY);
-        }
-
-        validPosition[1] = posY;
-        validPosition[0] = posX;
-        return validPosition;
+        int[] temp = area.createValidPosition();
+        boss =  new Boss(temp[0], temp[1]);
     }
 
     @Override
@@ -68,11 +41,8 @@ public class Board extends JComponent implements KeyListener{
         for(Skeleton temp : skeletons) {
             temp.draw(graphics);
         }
+        boss.draw(graphics);
         hero.draw(graphics);
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
     }
 
     @Override
@@ -96,6 +66,10 @@ public class Board extends JComponent implements KeyListener{
             hero.moveDown(area);
             repaint();
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
     }
 
     @Override

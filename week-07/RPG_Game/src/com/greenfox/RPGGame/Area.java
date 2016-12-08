@@ -1,6 +1,7 @@
 package com.greenfox.RPGGame;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Anna on 12/7/2016.
@@ -33,6 +34,24 @@ public class Area {
                 }
             }
         }
+    }
+
+    public int[] createValidPosition() {
+        Random random = new Random();
+        int[] validPosition = new int[2];
+        int posX = 0;
+        int posY = 0;
+        boolean isValidPosition = false;
+
+        while(!isValidPosition) {
+            posX = random.nextInt(10);
+            posY = random.nextInt(10);
+            isValidPosition = isFloor(posX, posY);
+        }
+        validPosition[0] = posX;
+        validPosition[1] = posY;
+
+        return validPosition;
     }
 
     public boolean isFloor(int posX, int posY) {
