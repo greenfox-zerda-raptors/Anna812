@@ -7,6 +7,7 @@ public class Hero extends PlayableCharacters {
 
     public Hero(String filename, int posX, int posY) {
         super(filename, posX, posY);
+        level = 1;
         HP = 20 + 3 * (dice.nextInt(6) + 1);
         DP = 2 * (dice.nextInt(6) + 1);
         SP = 5 + dice.nextInt(6) + 1;
@@ -39,5 +40,4 @@ public class Hero extends PlayableCharacters {
             drawImageOfObject("hero-down.png");
         }
     }
-
 }
