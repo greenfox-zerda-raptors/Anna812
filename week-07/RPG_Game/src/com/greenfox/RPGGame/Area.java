@@ -36,7 +36,6 @@ public class Area {
         }
     }
 
-
     public boolean isFloor(int posX, int posY) {
         if (isValidPosition(posX) && isValidPosition(posY)){
             return map[posY][posX] == 0;

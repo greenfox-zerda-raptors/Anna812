@@ -11,4 +11,9 @@ public class Boss extends Enemy {
         DP = level / 2 * (dice.nextInt(6) + 1)  + (dice.nextInt(6) + 1) / 2;
         SP = level * (dice.nextInt(6) + 1) + level;
     }
+
+    @Override
+    public String toString() {
+        return "Boss" + super.toString();
+    }
 }

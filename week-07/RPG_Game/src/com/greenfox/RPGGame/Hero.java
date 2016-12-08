@@ -13,6 +13,11 @@ public class Hero extends PlayableCharacters {
         SP = 5 + dice.nextInt(6) + 1;
     }
 
+    @Override
+    public String toString() {
+        return "Hero" + super.toString();
+    }
+
     public void moveLeft(Area area) {
         if (area.isFloor(posX - 1, posY)) {
             posX -= 1;

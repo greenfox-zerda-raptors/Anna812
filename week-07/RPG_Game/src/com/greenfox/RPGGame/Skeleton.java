@@ -15,6 +15,11 @@ public class Skeleton extends Enemy {
         SP = level * (dice.nextInt(6) + 1);
     }
 
+    @Override
+    public String toString() {
+        return "Skeleton" + super.toString();
+    }
+
     public static ArrayList<Enemy> createAnyNumberOfSkeletons(Board board) {
         Random random =  new Random();
         ArrayList<Enemy> skeletons = new ArrayList<>();
