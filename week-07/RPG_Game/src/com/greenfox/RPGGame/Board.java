@@ -28,14 +28,16 @@ public class Board extends JComponent implements KeyListener{
 
         area = new Area();
         hero = new Hero("hero-down.png",0, 0);
-        createAnyNumberOfSkeletons(6);
+        createAnyNumberOfSkeletons(4);
     }
 
     private ArrayList<Skeleton> createAnyNumberOfSkeletons(int numberOfSkeletonsNeeded) {
         skeletons = new ArrayList<>();
         for(int i = 0; i < numberOfSkeletonsNeeded; i++) {
-            Skeleton skeleton =  new Skeleton(createValidPosition()[0], createValidPosition()[1]);
+            int[] temp = createValidPosition();
+            Skeleton skeleton =  new Skeleton(temp[0], temp[1]);
             skeletons.add(skeleton);
+            System.out.printf("%d.: x: %d, Y: %d\n", i, skeleton.posX, skeleton.posY);
         }
         return skeletons;
     }
@@ -48,13 +50,13 @@ public class Board extends JComponent implements KeyListener{
         boolean isValidPosition = false;
 
         while(!isValidPosition) {
-            posX = random.nextInt(9);
-            posY = random.nextInt(9);
+            posX = random.nextInt(10);
+            posY = random.nextInt(10);
             isValidPosition = area.isFloor(posX, posY);
         }
 
-        validPosition[0] = posX;
-        validPosition[1] = posY;
+        validPosition[0] = posY;
+        validPosition[1] = posX;
         return validPosition;
     }
 
@@ -66,7 +68,6 @@ public class Board extends JComponent implements KeyListener{
         for(Skeleton temp : skeletons) {
             temp.draw(graphics);
         }
-
         hero.draw(graphics);
     }
 

@@ -25,7 +25,7 @@ public class Area {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if(map[j][i] == 0) {
-                    Floor floor = new Floor(i, j);
+                    Floor floor = new Floor(i ,j);
                     gameObjectList.add(floor);
                 } else {
                     Wall wall = new Wall(i, j);
@@ -37,7 +37,7 @@ public class Area {
 
     public boolean isFloor(int posX, int posY) {
         if (isValidPosition(posX) && isValidPosition(posY)){
-            return map[posY][posX] == 0;
+            return map[posX][posY] == 0;
         }
         return false;
     }
