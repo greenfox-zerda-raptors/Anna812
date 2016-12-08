@@ -14,7 +14,8 @@ public class Board extends JComponent implements KeyListener{
     private Area area;
     private Hero hero;
     private ArrayList<Skeleton> skeletons;
-    Monster monster;
+
+    protected Random random = new Random();
 
     public Board() {
         JFrame frame = new JFrame();
@@ -28,22 +29,21 @@ public class Board extends JComponent implements KeyListener{
 
         area = new Area();
         hero = new Hero("hero-down.png",0, 0);
-        createAnyNumberOfSkeletons(4);
+        createAnyNumberOfSkeletons();
     }
 
-    private ArrayList<Skeleton> createAnyNumberOfSkeletons(int numberOfSkeletonsNeeded) {
+    private ArrayList<Skeleton> createAnyNumberOfSkeletons() {
         skeletons = new ArrayList<>();
-        for(int i = 0; i < numberOfSkeletonsNeeded; i++) {
+        for(int i = 0; i < random.nextInt(((7 - 3) + 1) + 3); i++) {
             int[] temp = createValidPosition();
             Skeleton skeleton =  new Skeleton(temp[0], temp[1]);
             skeletons.add(skeleton);
-            System.out.printf("%d.: x: %d, Y: %d\n", i, skeleton.posX, skeleton.posY);
         }
         return skeletons;
     }
 
     private int[] createValidPosition() {
-        Random random = new Random();
+
         int[] validPosition = new int[2];
         int posX = 0;
         int posY = 0;
@@ -55,8 +55,8 @@ public class Board extends JComponent implements KeyListener{
             isValidPosition = area.isFloor(posX, posY);
         }
 
-        validPosition[0] = posY;
-        validPosition[1] = posX;
+        validPosition[1] = posY;
+        validPosition[0] = posX;
         return validPosition;
     }
 
