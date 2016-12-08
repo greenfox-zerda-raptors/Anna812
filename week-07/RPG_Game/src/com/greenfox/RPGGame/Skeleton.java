@@ -10,6 +10,9 @@ public class Skeleton extends Enemy {
 
     public Skeleton(int posX, int posY) {
         super("skeleton.png", posX, posY);
+        HP = 2 * level * (dice.nextInt(6) + 1);
+        DP = level / 2 * (dice.nextInt(6) + 1);
+        SP = level * (dice.nextInt(6) + 1);
     }
 
     public static ArrayList<Skeleton> createAnyNumberOfSkeletons(Area area) {
