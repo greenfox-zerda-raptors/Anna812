@@ -5,10 +5,15 @@ package com.greenfox.RPGGame;
  */
 public  abstract class PlayableCharacters extends GameObject{
 
-    protected int HP, DP, SP;
+    protected int level, HP, DP, SP;
 
     public PlayableCharacters(String filename, int posX, int posY) {
         super(filename, posX, posY);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("(Level %d) HP: *d/10, DP: %d, SP: %d", level, HP, DP, SP);
     }
 
     public void moveLeft(Area area) {
