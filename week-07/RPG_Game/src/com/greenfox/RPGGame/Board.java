@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Anna812 on 12/5/2016.
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class Board extends JComponent implements KeyListener{
     private Area area;
     private Hero hero;
-    private ArrayList<Skeleton> skeletons;
+    private ArrayList<Enemy> enemies = new ArrayList<>();
     private Boss boss;
 
     Board() {
@@ -27,10 +28,11 @@ public class Board extends JComponent implements KeyListener{
 
         area = new Area();
         hero = new Hero("hero-down.png",0, 0);
-        skeletons = Skeleton.createAnyNumberOfSkeletons(area);
+        enemies = Skeleton.createAnyNumberOfSkeletons(this);
 
-        int[] temp = area.createValidPosition();
+        int[] temp = createValidPosition();
         boss =  new Boss(temp[0], temp[1]);
+        enemies.add(boss);
     }
 
     @Override
@@ -38,11 +40,34 @@ public class Board extends JComponent implements KeyListener{
         for(GameObject temp : area.gameObjectList) {
                 temp.draw(graphics);
         }
-        for(Skeleton temp : skeletons) {
+        for(Enemy temp : enemies) {
             temp.draw(graphics);
         }
-        boss.draw(graphics);
         hero.draw(graphics);
+    }
+
+    public int[] createValidPosition() {
+        Random random = new Random();
+        int[] validPosition = new int[2];
+        int posX = -1;
+        int posY = -1;
+
+        while(!(area.isFloor(posX, posY) && isEmptyFloor(posX, posY))) {
+            posX = random.nextInt(10);
+            posY = random.nextInt(10);
+        }
+        validPosition[0] = posX;
+        validPosition[1] = posY;
+
+        return validPosition;
+    }
+
+    private boolean isEmptyFloor(int posX, int posY) {
+        boolean freeSpace =!hero.isPositionTaken(posX, posY);
+        for(Enemy temp: enemies) {
+            freeSpace &= !temp.isPositionTaken(posX, posY);
+        }
+        return freeSpace;
     }
 
     @Override

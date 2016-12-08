@@ -15,12 +15,12 @@ public class Skeleton extends Enemy {
         SP = level * (dice.nextInt(6) + 1);
     }
 
-    public static ArrayList<Skeleton> createAnyNumberOfSkeletons(Area area) {
+    public static ArrayList<Enemy> createAnyNumberOfSkeletons(Board board) {
         Random random =  new Random();
-        ArrayList<Skeleton> skeletons = new ArrayList<>();
+        ArrayList<Enemy> skeletons = new ArrayList<>();
 
-        for(int i = 0; i < random.nextInt(7 - 3) + 3; i++) {
-            int[] temp = area.createValidPosition();
+        for(int i = 0; i < random.nextInt(4) + 3; i++) {
+            int[] temp = board.createValidPosition();
             Skeleton skeleton =  new Skeleton(temp[0], temp[1]);
             skeletons.add(skeleton);
         }
