@@ -7,6 +7,7 @@ public class Boss extends Enemy {
 
     public Boss(int posX, int posY) {
         super("boss.png", posX, posY);
+        maxHP = 42;
         HP = 2 * level * (dice.nextInt(6) + 1) + (dice.nextInt(6) + 1);
         DP = level / 2 * (dice.nextInt(6) + 1)  + (dice.nextInt(6) + 1) / 2;
         SP = level * (dice.nextInt(6) + 1) + level;

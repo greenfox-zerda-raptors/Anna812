@@ -8,7 +8,7 @@ import java.util.Random;
 public abstract class PlayableCharacters extends GameObject{
 
     protected int level;
-    protected int HP, DP, SP;
+    protected int HP, DP, SP, maxHP;
     protected Random dice = new Random();
 
     public PlayableCharacters(String filename, int posX, int posY) {
@@ -17,7 +17,7 @@ public abstract class PlayableCharacters extends GameObject{
 
     @Override
     public String toString() {
-        return String.format("(Level %d) HP: %d/10 | DP: %d | SP: %d", level, HP, DP, SP);
+        return String.format("(Level %d) HP: %d / %d | DP: %d | SP: %d", level, HP, maxHP, DP, SP);
     }
 
     public boolean isPositionTaken(int posX, int posY) {
