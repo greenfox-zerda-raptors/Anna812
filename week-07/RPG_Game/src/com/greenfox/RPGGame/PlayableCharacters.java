@@ -17,10 +17,14 @@ public abstract class PlayableCharacters extends GameObject{
 
     @Override
     public String toString() {
-        return String.format("(Level %d) HP: *d/10 | DP: %d | SP: %d", level, HP, DP, SP);
+        return String.format("(Level %d) HP: %d/10 | DP: %d | SP: %d", level, HP, DP, SP);
     }
 
     public boolean isPositionTaken(int posX, int posY) {
         return this.posX == posX && this.posY == posY;
+    }
+
+    public boolean isAlive(){
+        return HP > 0;
     }
 }
