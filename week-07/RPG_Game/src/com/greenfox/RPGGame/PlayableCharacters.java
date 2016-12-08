@@ -36,5 +36,4 @@ public  abstract class PlayableCharacters extends GameObject{
             drawImageOfObject("hero-down.png");
         }
     }
-
 }
