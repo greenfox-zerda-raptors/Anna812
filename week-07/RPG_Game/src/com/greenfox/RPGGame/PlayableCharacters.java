@@ -5,7 +5,8 @@ package com.greenfox.RPGGame;
  */
 public  abstract class PlayableCharacters extends GameObject{
 
-    protected int level, HP, DP, SP;
+    protected int level;
+    protected int HP, DP, SP;
 
     public PlayableCharacters(String filename, int posX, int posY) {
         super(filename, posX, posY);
@@ -13,34 +14,6 @@ public  abstract class PlayableCharacters extends GameObject{
 
     @Override
     public String toString() {
-        return String.format("(Level %d) HP: *d/10, DP: %d, SP: %d", level, HP, DP, SP);
-    }
-
-    public void moveLeft(Area area) {
-        if (area.isFloor(posX - 1, posY)) {
-            posX -= 1;
-            drawImageOfObject("hero-left.png");
-        }
-    }
-
-     public void moveRight(Area area) {
-         if (area.isFloor(posX + 1, posY)) {
-             posX += 1;
-             drawImageOfObject("hero-right.png");
-         }
-     }
-
-    public void moveUp(Area area) {
-        if (area.isFloor(posX, posY - 1)) {
-            posY -= 1;
-            drawImageOfObject("hero-up.png");
-        }
-    }
-
-    public void moveDown(Area area) {
-        if (area.isFloor(posX, posY + 1)) {
-            posY += 1;
-            drawImageOfObject("hero-down.png");
-        }
+        return String.format("(Level %d) HP: *d/10 | DP: %d | SP: %d", level, HP, DP, SP);
     }
 }
