@@ -59,7 +59,7 @@ public class Board extends JComponent implements KeyListener{
         }
     }
 
-    public int[] createValidPosition(){
+    private int[] createValidPosition(){
         Random random = new Random();
         int[] validPosition = new int[2];
         int posX = -1;
@@ -83,27 +83,39 @@ public class Board extends JComponent implements KeyListener{
         return freeSpace;
     }
 
+    private Enemy getEnemy(int posX, int posY) {
+        for(Enemy temp: enemies) {
+            if (temp.posX == posX && temp.posY == posY) {
+                return temp;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
             hero.moveLeft(area);
-            repaint();
         }
 
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
             hero.moveRight(area);
-            repaint();
         }
 
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
+        if(e.getKeyCode() == KeyEvent.VK_UP) {
             hero.moveUp(area);
-            repaint();
         }
 
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             hero.moveDown(area);
-            repaint();
         }
+
+        if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if(!isEmptyFloor(hero.posX, hero.posY)) {
+                hero.battle(getEnemy(hero.posX, hero.posY));
+            }
+        }
+        repaint();
     }
 
     @Override
