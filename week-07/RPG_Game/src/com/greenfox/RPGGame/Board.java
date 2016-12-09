@@ -45,13 +45,18 @@ public class Board extends JComponent implements KeyListener{
                 temp.draw(graphics);
             }
         }
-
         hero.draw(graphics);
 
         graphics.setColor(Color.LIGHT_GRAY);
         graphics.fillRect(0, 720, 720, 910);
 
         displayStats(graphics);
+
+        if(!hero.isAlive()) {
+            graphics.setColor(Color.RED);
+            graphics.setFont(new Font("Arial", Font.BOLD, 40));
+            graphics.drawString("GAME OVER", 200, 320);
+        }
     }
 
     private void displayStats(Graphics graphics) {
