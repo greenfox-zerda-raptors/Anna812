@@ -41,13 +41,20 @@ public class Board extends JComponent implements KeyListener{
                 temp.draw(graphics);
         }
         for(Enemy temp : enemies) {
-            temp.draw(graphics);
+            if(temp.isAlive()){
+                temp.draw(graphics);
+            }
         }
+
         hero.draw(graphics);
 
         graphics.setColor(Color.LIGHT_GRAY);
         graphics.fillRect(0, 720, 720, 910);
 
+        displayStats(graphics);
+    }
+
+    private void displayStats(Graphics graphics) {
         graphics.setColor(Color.BLACK);
         graphics.setFont(new Font("Arial", Font.BOLD, 16));
         graphics.drawString(hero.toString(), 5, 740);
