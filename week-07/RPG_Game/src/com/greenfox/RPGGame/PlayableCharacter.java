@@ -29,9 +29,15 @@ public abstract class PlayableCharacter extends GameObject{
     }
 
     public void battle(Enemy enemy) {
-        while(this.isAlive() || enemy.isAlive()){
+        while(this.isAlive() && enemy.isAlive()){
             strike(enemy);
             enemy.strike(this);
+        }
+        if(!enemy.isAlive()) {
+            level++;
+            maxHP += dice.nextInt(6) + 1;
+            DP += dice.nextInt(6) + 1;
+            SP += dice.nextInt(6) + 1;
         }
     }
 
@@ -43,7 +49,7 @@ public abstract class PlayableCharacter extends GameObject{
     }
 
     public int countStrikeValue(){
-        return SP + dice.nextInt(7) * 2;
+        return SP + (dice.nextInt(6) + 1) * 2;
     }
 
     public boolean isStrikeSuccessful(PlayableCharacter playableCharacter, int strikeValue) {
