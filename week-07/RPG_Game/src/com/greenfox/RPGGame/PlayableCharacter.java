@@ -5,13 +5,13 @@ import java.util.Random;
 /**
  * Created by Anna812 on 12/5/2016.
  */
-public abstract class PlayableCharacters extends GameObject{
+public abstract class PlayableCharacter extends GameObject{
 
     protected int level;
     protected int HP, DP, SP, maxHP;
     protected Random dice = new Random();
 
-    public PlayableCharacters(String filename, int posX, int posY) {
+    public PlayableCharacter(String filename, int posX, int posY) {
         super(filename, posX, posY);
     }
 
@@ -30,14 +30,15 @@ public abstract class PlayableCharacters extends GameObject{
 
     public void battle(Enemy enemy) {
         while(this.isAlive() || enemy.isAlive()){
-            int heroStrikeValue = countStrikeValue();
-            if(isStrikeSuccessful(enemy, heroStrikeValue)) {
-                enemy.HP -= (heroStrikeValue - enemy.DP);
-            }
-            int enemyStrikeValue = countStrikeValue();
-            if(enemy.isStrikeSuccessful(this, enemyStrikeValue)) {
-                HP -= (enemyStrikeValue - DP);
-            }
+            strike(enemy);
+            enemy.strike(this);
+        }
+    }
+
+    public void strike(PlayableCharacter playableCharacter) {
+        int strikeValue = countStrikeValue();
+        if(isStrikeSuccessful(playableCharacter, strikeValue)) {
+            playableCharacter.HP -= (strikeValue - playableCharacter.DP);
         }
     }
 
@@ -45,7 +46,7 @@ public abstract class PlayableCharacters extends GameObject{
         return SP + dice.nextInt(7) * 2;
     }
 
-    public boolean isStrikeSuccessful(PlayableCharacters playableCharacter, int strikeValue) {
+    public boolean isStrikeSuccessful(PlayableCharacter playableCharacter, int strikeValue) {
         return strikeValue > playableCharacter.DP;
     }
 }
