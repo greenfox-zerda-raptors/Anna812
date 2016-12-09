@@ -7,9 +7,9 @@ import java.util.Random;
  */
 public abstract class PlayableCharacter extends GameObject{
 
-    protected int level;
-    protected int HP, DP, SP, maxHP;
-    protected Random dice = new Random();
+    int level;
+    int HP, DP, SP, maxHP;
+    Random dice = new Random();
 
     public PlayableCharacter(String filename, int posX, int posY) {
         super(filename, posX, posY);
@@ -33,12 +33,7 @@ public abstract class PlayableCharacter extends GameObject{
             strike(enemy);
             enemy.strike(this);
         }
-        if(!enemy.isAlive()) {
-            level++;
-            maxHP += dice.nextInt(6) + 1;
-            DP += dice.nextInt(6) + 1;
-            SP += dice.nextInt(6) + 1;
-        }
+        upgradeHero(enemy);
     }
 
     public void strike(PlayableCharacter playableCharacter) {
@@ -48,11 +43,20 @@ public abstract class PlayableCharacter extends GameObject{
         }
     }
 
-    public int countStrikeValue(){
+    private int countStrikeValue(){
         return SP + (dice.nextInt(6) + 1) * 2;
     }
 
-    public boolean isStrikeSuccessful(PlayableCharacter playableCharacter, int strikeValue) {
+    private boolean isStrikeSuccessful(PlayableCharacter playableCharacter, int strikeValue) {
         return strikeValue > playableCharacter.DP;
+    }
+
+    private void upgradeHero(Enemy enemy) {
+        if(!enemy.isAlive()) {
+            level++;
+            maxHP += dice.nextInt(6) + 1;
+            DP += dice.nextInt(6) + 1;
+            SP += dice.nextInt(6) + 1;
+        }
     }
 }

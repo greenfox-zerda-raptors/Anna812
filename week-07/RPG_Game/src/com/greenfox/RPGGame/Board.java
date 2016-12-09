@@ -94,7 +94,7 @@ public class Board extends JComponent implements KeyListener{
     private boolean isEmptyFloor(int posX, int posY) {
         boolean freeSpace =!hero.isPositionTaken(posX, posY);
         freeSpace &=!hero2.isPositionTaken(posX, posY);
-        for(Enemy temp: enemies) {
+        for(Enemy temp : enemies) {
             if(temp.isAlive()){
                 freeSpace &= !temp.isPositionTaken(posX, posY);
             }
