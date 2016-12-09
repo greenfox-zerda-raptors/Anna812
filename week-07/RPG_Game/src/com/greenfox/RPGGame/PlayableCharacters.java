@@ -27,4 +27,14 @@ public abstract class PlayableCharacters extends GameObject{
     public boolean isAlive(){
         return HP > 0;
     }
+
+    public void battle(Enemy enemy) {
+
+    }
+
+    public boolean isStrikeSuccessful(Enemy enemy) {
+        int heroPower = SP + dice.nextInt(7) * 2;
+        int enemyPower = enemy.SP + dice.nextInt(7) * 2;
+        return heroPower > enemyPower;
+    }
 }
