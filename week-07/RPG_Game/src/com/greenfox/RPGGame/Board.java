@@ -59,7 +59,7 @@ public class Board extends JComponent implements KeyListener{
         }
     }
 
-    private int[] createValidPosition(){
+    public int[] createValidPosition(){
         Random random = new Random();
         int[] validPosition = new int[2];
         int posX = -1;

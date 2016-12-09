@@ -29,12 +29,23 @@ public abstract class PlayableCharacters extends GameObject{
     }
 
     public void battle(Enemy enemy) {
-
+        while(this.isAlive() || enemy.isAlive()){
+            int heroStrikeValue = countStrikeValue();
+            if(isStrikeSuccessful(enemy, heroStrikeValue)) {
+                enemy.HP -= (heroStrikeValue - enemy.DP);
+            }
+            int enemyStrikeValue = countStrikeValue();
+            if(enemy.isStrikeSuccessful(this, enemyStrikeValue)) {
+                HP -= (enemyStrikeValue - DP);
+            }
+        }
     }
 
-    public boolean isStrikeSuccessful(Enemy enemy) {
-        int heroPower = SP + dice.nextInt(7) * 2;
-        int enemyPower = enemy.SP + dice.nextInt(7) * 2;
-        return heroPower > enemyPower;
+    public int countStrikeValue(){
+        return SP + dice.nextInt(7) * 2;
+    }
+
+    public boolean isStrikeSuccessful(PlayableCharacters playableCharacter, int strikeValue) {
+        return strikeValue > playableCharacter.DP;
     }
 }
