@@ -50,10 +50,15 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
     }
 
     @Override
-    public int calculateDaysToNextAnniversary(Date date) {
+    public int calculateDaysToNextAnniversary(Date birthday) {
         // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
-
-        return -1;
+        Date today = new Date();
+        SimpleDateFormat MMdd = new SimpleDateFormat("MMdd");
+        if(today.compareTo(birthday) <= 0) {
+            return Integer.parseInt(MMdd.format(birthday)) - Integer.parseInt(MMdd.format(today));
+        } else {
+            return 365 - (Integer.parseInt(MMdd.format(today)) - Integer.parseInt(MMdd.format(birthday)));
+        }
     }
 
     public static void main(String[] args) {
