@@ -42,10 +42,11 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
         Date today = new Date();
         int todayYear = Integer.parseInt(yyyy.format(today));
         int birthdayYear = Integer.parseInt(yyyy.format(birthday));
+        int age = todayYear - birthdayYear;
         if(Integer.parseInt(MMdd.format(today)) >= Integer.parseInt(MMdd.format(birthday))) {
-            return todayYear - birthdayYear;
+            return age;
         } else {
-            return todayYear - birthdayYear - 1;
+            return age - 1;
         }
     }
 
