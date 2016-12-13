@@ -53,8 +53,11 @@ public class Board extends JComponent implements KeyListener{
         graphics.fillRect(0, 720, 720, 910);
 
         displayStats(graphics);
+        displayGameOver(graphics);
+    }
 
-        if(!hero.isAlive()) {
+    private void displayGameOver(Graphics graphics) {
+        if(!(hero.isAlive() && hero2.isAlive())) {
             graphics.setColor(Color.RED);
             graphics.setFont(new Font("Arial", Font.BOLD, 60));
             graphics.drawString("GAME OVER", 190, 320);
@@ -151,12 +154,11 @@ public class Board extends JComponent implements KeyListener{
             } catch (NullPointerException ex) {}
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_ALT) {
+        if(e.getKeyCode() == KeyEvent.VK_CONTROL) {
             try {
                 hero2.battle(getEnemy(hero2.posX, hero2.posY));
             } catch (NullPointerException ex) {}
         }
-
         repaint();
     }
 
