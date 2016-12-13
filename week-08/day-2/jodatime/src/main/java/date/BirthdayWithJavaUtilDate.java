@@ -38,15 +38,21 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
     public int calculateAgeInYears(Date birthday) {
         // TODO - return how many years age the input date 'birthday' was
         SimpleDateFormat yyyy = new SimpleDateFormat("yyyy");
+        SimpleDateFormat MMdd = new SimpleDateFormat("MMdd");
         Date today = new Date();
         int todayYear = Integer.parseInt(yyyy.format(today));
         int birthdayYear = Integer.parseInt(yyyy.format(birthday));
-        return todayYear-birthdayYear;
+        if(Integer.parseInt(MMdd.format(today)) >= Integer.parseInt(MMdd.format(birthday))) {
+            return todayYear - birthdayYear;
+        } else {
+            return todayYear - birthdayYear - 1;
+        }
     }
 
     @Override
     public int calculateDaysToNextAnniversary(Date date) {
         // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
+
         return -1;
     }
 
