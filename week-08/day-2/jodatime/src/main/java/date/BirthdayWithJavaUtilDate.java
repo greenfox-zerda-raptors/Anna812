@@ -22,22 +22,24 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
     @Override
     public String printMonthAndDay(Date date) {
         // TODO - return the date formatted: month & day (MM. dd.)
+        SimpleDateFormat MMdd = new SimpleDateFormat("MM-dd");
         String result = "";
-        String[] splitResult = date.toString().split(" ");
-        result += splitResult[1] + ". " + splitResult[2] + ".";
+        String[] splitResult = MMdd.format(date).split("-");
+        result += splitResult[0] + ". " + splitResult[1] + ".";
         return result;
     }
 
     @Override
     public boolean isAnniversaryToday(Date date) {
         // TODO - return with true if today is the same month+day as date
-        
-        return false;
+        Date today = new Date();
+        return printMonthAndDay(today).equals(printMonthAndDay(date));
     }
 
     @Override
     public int calculateAgeInYears(Date birthday) {
         // TODO - return how many years age the input date 'birthday' was
+        SimpleDateFormat MMdd = new SimpleDateFormat("MM-dd");
         return -1;
     }
 
