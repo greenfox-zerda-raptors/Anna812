@@ -22,13 +22,16 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
     @Override
     public String printMonthAndDay(Date date) {
         // TODO - return the date formatted: month & day (MM. dd.)
-
-        return null;
+        String result = "";
+        String[] splitResult = date.toString().split(" ");
+        result += splitResult[1] + ". " + splitResult[2] + ".";
+        return result;
     }
 
     @Override
     public boolean isAnniversaryToday(Date date) {
         // TODO - return with true if today is the same month+day as date
+        
         return false;
     }
 
