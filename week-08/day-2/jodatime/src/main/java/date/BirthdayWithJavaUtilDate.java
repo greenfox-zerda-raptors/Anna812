@@ -22,10 +22,8 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
     @Override
     public String printMonthAndDay(Date date) {
         // TODO - return the date formatted: month & day (MM. dd.)
-        SimpleDateFormat MMdd = new SimpleDateFormat("MM-dd");
-        String result = "";
-        String[] splitResult = MMdd.format(date).split("-");
-        result += splitResult[0] + ". " + splitResult[1] + ".";
+        SimpleDateFormat MMdd = new SimpleDateFormat("MM. dd.");
+        String result = MMdd.format(date);
         return result;
     }
 
@@ -39,8 +37,11 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
     @Override
     public int calculateAgeInYears(Date birthday) {
         // TODO - return how many years age the input date 'birthday' was
-        SimpleDateFormat MMdd = new SimpleDateFormat("MM-dd");
-        return -1;
+        SimpleDateFormat yyyy = new SimpleDateFormat("yyyy");
+        Date today = new Date();
+        int todayYear = Integer.parseInt(yyyy.format(today));
+        int birthdayYear = Integer.parseInt(yyyy.format(birthday));
+        return todayYear-birthdayYear;
     }
 
     @Override
