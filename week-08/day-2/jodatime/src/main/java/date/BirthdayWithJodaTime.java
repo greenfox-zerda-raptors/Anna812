@@ -12,24 +12,31 @@ public class BirthdayWithJodaTime implements BirthdayCalculator<LocalDate> {
     @Override
     public LocalDate parseDate(String str) {
         // TODO - return with the parsed date; format is: yyyy-MM-dd
-        return null;
+        if(str != null) {
+            LocalDate result = new LocalDate(str);
+            return result;
+        } else {
+            return null;
+        }
     }
 
     @Override
     public String printMonthAndDay(LocalDate date) {
         // TODO - return the date formatted: month & day (MM. dd.)
-        return null;
+        return date.getMonthOfYear() + ". " + date.getDayOfMonth() + ".";
     }
 
     @Override
     public boolean isAnniversaryToday(LocalDate date) {
         // TODO - return with true if today is the same month+day as date
-        return false;
+        return printMonthAndDay(date).equals(printMonthAndDay(new LocalDate()));
     }
 
     @Override
     public int calculateAgeInYears(LocalDate birthday) {
         // TODO - return how many years age the input date 'birthday' was
+        LocalDate today = new LocalDate();
+        if(today.getDayOfMonth())
         return -1;
     }
 
