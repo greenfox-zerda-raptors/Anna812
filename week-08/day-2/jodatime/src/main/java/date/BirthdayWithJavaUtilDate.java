@@ -1,5 +1,7 @@
 package date;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -8,12 +10,19 @@ public final class BirthdayWithJavaUtilDate implements BirthdayCalculator<Date> 
     @Override
     public Date parseDate(String str) {
         // TODO - return with the parsed date; format is: yyyy-MM-dd
+        SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
+        try {
+            return sdf.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public String printMonthAndDay(Date date) {
         // TODO - return the date formatted: month & day (MM. dd.)
+
         return null;
     }
 
