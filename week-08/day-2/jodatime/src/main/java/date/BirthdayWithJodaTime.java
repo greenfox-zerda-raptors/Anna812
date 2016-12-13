@@ -1,5 +1,6 @@
 package date;
 
+import org.joda.time.Instant;
 import org.joda.time.LocalDate;
 
 import java.util.Scanner;
@@ -48,10 +49,15 @@ public class BirthdayWithJodaTime implements BirthdayCalculator<LocalDate> {
     }
 
     @Override
-    public int calculateDaysToNextAnniversary(LocalDate date) {
+    public int calculateDaysToNextAnniversary(LocalDate birthday) {
         // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
-
-        return -1;
+        LocalDate today = new LocalDate();
+        int birthdayDay = birthday.getDayOfYear();
+        int todayDay = today.getDayOfYear();
+        if(todayDay <= birthdayDay) {
+            return birthdayDay - todayDay;
+        }
+        return 365 - (todayDay - birthdayDay);
     }
 
     public static void main(String[] args) {
