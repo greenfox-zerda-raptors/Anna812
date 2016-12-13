@@ -36,13 +36,21 @@ public class BirthdayWithJodaTime implements BirthdayCalculator<LocalDate> {
     public int calculateAgeInYears(LocalDate birthday) {
         // TODO - return how many years age the input date 'birthday' was
         LocalDate today = new LocalDate();
-        if(today.getDayOfMonth())
-        return -1;
+        int age = today.getYear() - birthday.getYear();
+        if(today.getMonthOfYear() > birthday.getMonthOfYear()) {
+            return age;
+        } else if(today.getMonthOfYear() == birthday.getMonthOfYear()){
+            if (today.getDayOfMonth() >= birthday.getDayOfMonth()) {
+                return age;
+            }
+        }
+        return age - 1;
     }
 
     @Override
     public int calculateDaysToNextAnniversary(LocalDate date) {
         // TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
+
         return -1;
     }
 
