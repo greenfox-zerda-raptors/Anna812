@@ -10,7 +10,7 @@ public class Account {
     private String name;
     @DatabaseField
     private String password;
-    @DatabaseField(foreignAutoCreate = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private Address address;
 
     public Account() {

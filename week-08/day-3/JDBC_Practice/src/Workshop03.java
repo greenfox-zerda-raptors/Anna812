@@ -17,8 +17,7 @@ public class Workshop03 {
         TableUtils.createTableIfNotExists(connectionSource, Account.class);
         TableUtils.createTableIfNotExists(connectionSource, Address.class);
 
-        Dao<Account, String> accountDao =
-                DaoManager.createDao(connectionSource, Account.class);
+        Dao<Account, String> accountDao = DaoManager.createDao(connectionSource, Account.class);
 
 
         Account account = new Account("Captain America", "uejnsd632**234.");
