@@ -17,7 +17,7 @@ public class BirthdayWithJodaTime implements BirthdayCalculator<LocalDate> {
             LocalDate result = new LocalDate(str);
             return result;
         } else {
-            return null;
+            throw new NullPointerException();
         }
     }
 
