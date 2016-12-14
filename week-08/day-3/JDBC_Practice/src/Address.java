@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 @DatabaseTable
 public class Address {
-    @DatabaseField(generatedId = true, canBeNull = false, columnName = "address_id")
+    @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField
     private String street;
