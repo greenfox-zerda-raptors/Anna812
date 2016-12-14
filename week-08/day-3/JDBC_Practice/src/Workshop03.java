@@ -1,9 +1,12 @@
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
+import java.util.List;
+
 /**
  * Created by Anna on 16/12/14.
  */
@@ -19,8 +22,8 @@ public class Workshop03 {
 
         Dao<Account, String> accountDao = DaoManager.createDao(connectionSource, Account.class);
 
-
-        Account account = new Account("Captain America", "uejnsd632**234.");
+        Account account = new Account("Captain America", "uejnsd632**234.",
+                new Address("Andrassy ut 66", "Budapest", 1061, "Hungary"));
         createAccountIfNotExists(accountDao, account);
 
         account = accountDao.queryForId("Captain America");
