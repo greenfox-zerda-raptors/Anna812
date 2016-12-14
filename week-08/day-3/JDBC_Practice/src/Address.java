@@ -16,4 +16,9 @@ public class Address {
     private int postcode;
     @DatabaseField
     private String country;
+
+    @Override
+    public String toString() {
+        return String.format("{\npostcode = %d\ncity = %s\ncountry = %s\nstreet = %s\n}", postcode, city, country, street);
+    }
 }

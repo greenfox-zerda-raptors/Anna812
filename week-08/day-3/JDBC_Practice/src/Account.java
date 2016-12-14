@@ -32,4 +32,9 @@ public class Account {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return String.format("{\n%s\n%s\n}", name, address.toString());
+    }
 }
