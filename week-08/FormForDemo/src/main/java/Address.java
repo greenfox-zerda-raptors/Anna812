@@ -15,7 +15,7 @@ public class Address {
     @DatabaseField
     String city;
     @DatabaseField
-    String postalCode;
+    int postalCode;
     @DatabaseField
     String street;
 }
