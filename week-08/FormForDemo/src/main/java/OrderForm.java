@@ -1,12 +1,19 @@
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 /**
  * Created by Anna on 16/12/15.
  */
-public class OrderForm extends JPanel implements ActionListener {
+public class OrderForm extends JPanel {
 
     private JLabel nameLabel, emailLabel, addressLabel, cityLabel, postalCodeLabel, streetLabel, orderedItemLabel, paymentMethodLabel;
     JTextField nameTextField, emailTextField, cityTextField, postalCodeTextField, streetTextField;
@@ -93,22 +100,43 @@ public class OrderForm extends JPanel implements ActionListener {
 
     private void createSubmitButton() {
         submit = new JButton("Submit");
+        submit.addActionListener(
+                new submitData());
         add(submit);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == submit){
-            Customer customer = new Customer(null, nameTextField.getText(), emailTextField.getText());
-            Address address = new Address(null, cityTextField.getText(), Integer.parseInt(postalCodeTextField.getText()),
-                    streetTextField.getText());
-            if(cash.isSelected()) {
-                Order order = new Order(null, orderedItemCombo.getSelectedItem().toString(), "cash",
-                        customer, address);
-            } else {
-                Order order = new Order(null, orderedItemCombo.getSelectedItem().toString(), "credit card",
-                        customer, address);
+    private class submitData implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                exportData();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
         }
+    }
+
+    private void exportData() throws SQLException{
+        ConnectionSource connectionSource = new JdbcConnectionSource("jdbc:mysql://localhost:3306/order_form?user=root&password=0000");
+
+        TableUtils.createTableIfNotExists(connectionSource, Order.class);
+        TableUtils.createTableIfNotExists(connectionSource, Customer.class);
+        TableUtils.createTableIfNotExists(connectionSource, Address.class);
+
+        Dao<Order, Integer> orderDao = DaoManager.createDao(connectionSource, Order.class);
+
+        Customer customer = new Customer(nameTextField.getText(), emailTextField.getText());
+        Address address = new Address(cityTextField.getText(), Integer.parseInt(postalCodeTextField.getText()),
+                streetTextField.getText());
+
+        Order order;
+        if(cash.isSelected()) {
+            order = new Order(orderedItemCombo.getSelectedItem().toString(), "cash",
+                    customer, address);
+        } else {
+            order = new Order(orderedItemCombo.getSelectedItem().toString(), "credit card",
+                    customer, address);
+        }
+        orderDao.create(order);
     }
 }
