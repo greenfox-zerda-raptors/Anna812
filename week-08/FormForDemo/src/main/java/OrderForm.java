@@ -1,18 +1,19 @@
-import javax.print.DocFlavor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Anna on 16/12/15.
  */
 public class OrderForm extends JPanel implements ActionListener {
 
-    private ArrayList<JLabel> labels;
-    private ArrayList<TextField> textFields;
+    private JLabel nameLabel, emailLabel, addressLabel, cityLabel, postalCodeLabel, streetLabel, orderedItemLabel, paymentMethodLabel;
+    JTextField nameTextField, emailTextField, cityTextField, postalCodeTextField, streetTextField;
+    private JComboBox orderedItemCombo;
+    ButtonGroup paymentMethodRadioButtons;
+    JRadioButton cash, creditCard;
+    private JButton submit;
 
     public OrderForm() {
         JFrame frame = new JFrame();
@@ -24,22 +25,24 @@ public class OrderForm extends JPanel implements ActionListener {
         frame.setVisible(true);
         frame.add(this);
         createFormLayout();
-        createComboBoxes();
+        createComboBox();
+        createRadioButtons();
+        createSubmitButton();
     }
 
     private void createFormLayout() {
-        JLabel nameLabel = new JLabel("Name");
-        JLabel emailLabel = new JLabel("E-mail");
-        JLabel addressLabel = new JLabel("Address");
-        JLabel cityLabel = new JLabel("City");
-        JLabel postalCodeLabel = new JLabel("Postal Code");
-        JLabel streetLabel = new JLabel("Street");
+        nameLabel = new JLabel("Name");
+        emailLabel = new JLabel("E-mail");
+        addressLabel = new JLabel("Address");
+        cityLabel = new JLabel("City");
+        postalCodeLabel = new JLabel("Postal Code");
+        streetLabel = new JLabel("Street");
 
-        JTextField nameTextField = new JTextField(10);
-        JTextField emailTextField = new JTextField(10);
-        JTextField cityTextField = new JTextField(10);
-        JTextField postalCodeTextField = new JTextField(10);
-        JTextField streetTextField = new JTextField(10);
+        nameTextField = new JTextField(10);
+        emailTextField = new JTextField(10);
+        cityTextField = new JTextField(10);
+        postalCodeTextField = new JTextField(10);
+        streetTextField = new JTextField(10);
 
         add(nameLabel);
         add(nameTextField);
@@ -58,18 +61,54 @@ public class OrderForm extends JPanel implements ActionListener {
         setFont(new Font(getName(), Font.PLAIN, 6));
     }
 
-    private void createComboBoxes() {
-        JLabel orderedItemLabel = new JLabel("Choose the item you want to order");
-        JLabel paymentMethodLabel = new JLabel("Choose payment method");
+    private void createComboBox() {
+        orderedItemLabel = new JLabel("Choose the item you want to order");
 
-        
+        DefaultComboBoxModel orderedItemName = new DefaultComboBoxModel();
+        orderedItemName.addElement("");
+        orderedItemName.addElement("Shoes");
+        orderedItemName.addElement("Dog");
+        orderedItemName.addElement("Food");
+        orderedItemName.addElement("Stuff");
+        orderedItemCombo = new JComboBox(orderedItemName);
+        JScrollPane orderedItemScrollPane = new JScrollPane(orderedItemCombo);
 
         add(orderedItemLabel);
+        add(orderedItemScrollPane);
+    }
+
+    private void createRadioButtons() {
+        paymentMethodLabel = new JLabel("Choose payment method");
+
+        cash = new JRadioButton("Cash");
+        creditCard = new JRadioButton("Credit Card");
+        paymentMethodRadioButtons = new ButtonGroup();
+        paymentMethodRadioButtons.add(cash);
+        paymentMethodRadioButtons.add(creditCard);
+
         add(paymentMethodLabel);
+        add(cash);
+        add(creditCard);
+    }
+
+    private void createSubmitButton() {
+        submit = new JButton("Submit");
+        add(submit);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        e.getSource();
+        if(e.getSource() == submit){
+            Customer customer = new Customer(null, nameTextField.getText(), emailTextField.getText());
+            Address address = new Address(null, cityTextField.getText(), Integer.parseInt(postalCodeTextField.getText()),
+                    streetTextField.getText());
+            if(cash.isSelected()) {
+                Order order = new Order(null, orderedItemCombo.getSelectedItem().toString(), "cash",
+                        customer, address);
+            } else {
+                Order order = new Order(null, orderedItemCombo.getSelectedItem().toString(), "credit card",
+                        customer, address);
+            }
+        }
     }
 }
