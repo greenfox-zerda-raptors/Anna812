@@ -10,6 +10,7 @@
 */*/gradlew.bat
 */*/*/gradlew.bat
 */*/*/.idea
+*/*/build
 */*/*/build
 */*/build.gradle
 */*/*/build.gradle
