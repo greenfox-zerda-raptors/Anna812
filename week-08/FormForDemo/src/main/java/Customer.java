@@ -1,5 +1,6 @@
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @DatabaseTable
 public class Customer {
     @DatabaseField(generatedId = true, id = true)
-    int customerID;
+    Integer customerID;
     @DatabaseField
     String name;
     @DatabaseField

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @DatabaseTable
 public class Address {
     @DatabaseField(generatedId = true, id = true)
-    int addressID;
+    Integer addressID;
     @DatabaseField
     String city;
     @DatabaseField
