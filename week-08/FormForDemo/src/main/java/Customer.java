@@ -24,4 +24,9 @@ public class Customer {
         this.email = email;
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Customer name: %s\nE-mail: %s\n%s", name, email, address.toString());
+    }
 }

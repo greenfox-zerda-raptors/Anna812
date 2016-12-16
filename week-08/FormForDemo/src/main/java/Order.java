@@ -36,4 +36,10 @@ public class Order {
         Date date = new Date();
         return sdf.format(date);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s\nOrdered item: %s\nChosen payment method: %s\nOrder placed at: %s",
+                customer.toString(), orderedItem, paymentMethod, timestamp);
+    }
 }

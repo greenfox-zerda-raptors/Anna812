@@ -24,4 +24,9 @@ public class Address {
         this.postalCode = postalCode;
         this.street = street;
     }
+
+    @Override
+    public String toString() {
+        return String.format("City: %s\nPostal code: %s\nStreet: %s", city, postalCode, street);
+    }
 }
