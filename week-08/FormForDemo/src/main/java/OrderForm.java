@@ -142,5 +142,14 @@ public class OrderForm extends JPanel {
                     customer);
         }
         orderDao.create(order);
+
+        retrieveData();
+    }
+
+    private String retrieveData() throws SQLException{
+        ConnectionSource connectionSource = new JdbcConnectionSource("jdbc:mysql://localhost:3306/order_form?user=root&password=0000");
+        Dao<Order, Integer> orderDao = DaoManager.createDao(connectionSource, Order.class);
+        Order orderRetrieved = orderDao.queryForId(0);
+        return orderRetrieved.toString();
     }
 }
