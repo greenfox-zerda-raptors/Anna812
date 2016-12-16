@@ -19,25 +19,29 @@ public class OrderForm extends JPanel {
     private JTextField nameTextField, emailTextField, cityTextField, postalCodeTextField, streetTextField;
     private JComboBox orderedItemCombo;
     private JRadioButton cash;
+    private JTextArea feedbackMessage;
+    private int counter = 1;
 
     public OrderForm() {
         JFrame frame = new JFrame();
         frame.setTitle("Order Form");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setSize(350, 500);
-        frame.setResizable(false);
+        frame.setSize(380, 650);
+        frame.setResizable(true);
         frame.setVisible(true);
-        frame.add(this, BorderLayout.NORTH);
+        frame.add(this);
         createFormLayout();
         createComboBox();
         createRadioButtons();
         createSubmitButton();
+        createFeedBackTextArea();
     }
 
     private void createFormLayout() {
         JLabel nameLabel = new JLabel("Name");
         nameLabel.setBorder(new EmptyBorder(0,0,5,0));
+        nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         JLabel emailLabel = new JLabel("E-mail");
         emailLabel.setBorder(new EmptyBorder(5,0,5,0));
         JLabel cityLabel = new JLabel("City");
@@ -108,14 +112,28 @@ public class OrderForm extends JPanel {
         add(submit);
     }
 
+    private void createFeedBackTextArea() {
+        feedbackMessage = new JTextArea(8, 10);
+        feedbackMessage.setBounds(5, 5, 300, 130);
+
+        JScrollPane feedbackPane = new JScrollPane(feedbackMessage);
+        feedbackPane.setAlignmentX(0);
+        feedbackPane.setPreferredSize(new Dimension(320, 150));
+
+        feedbackPane.add(feedbackMessage);
+        add(feedbackPane);
+    }
+
     private class submitData implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
                 exportData();
+                feedbackMessage.setText(retrieveData());
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
+            counter++;
         }
     }
 
@@ -142,14 +160,12 @@ public class OrderForm extends JPanel {
                     customer);
         }
         orderDao.create(order);
-
-        retrieveData();
     }
 
     private String retrieveData() throws SQLException{
         ConnectionSource connectionSource = new JdbcConnectionSource("jdbc:mysql://localhost:3306/order_form?user=root&password=0000");
         Dao<Order, Integer> orderDao = DaoManager.createDao(connectionSource, Order.class);
-        Order orderRetrieved = orderDao.queryForId(0);
+        Order orderRetrieved = orderDao.queryForId(counter);
         return orderRetrieved.toString();
     }
 }
