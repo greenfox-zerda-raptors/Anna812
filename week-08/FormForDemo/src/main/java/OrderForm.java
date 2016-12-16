@@ -5,6 +5,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,22 +16,19 @@ import java.sql.SQLException;
  */
 public class OrderForm extends JPanel {
 
-    private JLabel nameLabel, emailLabel, addressLabel, cityLabel, postalCodeLabel, streetLabel, orderedItemLabel, paymentMethodLabel;
-    JTextField nameTextField, emailTextField, cityTextField, postalCodeTextField, streetTextField;
+    private JTextField nameTextField, emailTextField, cityTextField, postalCodeTextField, streetTextField;
     private JComboBox orderedItemCombo;
-    ButtonGroup paymentMethodRadioButtons;
-    JRadioButton cash, creditCard;
-    private JButton submit;
+    private JRadioButton cash;
 
     public OrderForm() {
         JFrame frame = new JFrame();
         frame.setTitle("Order Form");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setSize(400, 400);
+        frame.setSize(350, 500);
         frame.setResizable(false);
         frame.setVisible(true);
-        frame.add(this);
+        frame.add(this, BorderLayout.NORTH);
         createFormLayout();
         createComboBox();
         createRadioButtons();
@@ -38,12 +36,16 @@ public class OrderForm extends JPanel {
     }
 
     private void createFormLayout() {
-        nameLabel = new JLabel("Name");
-        emailLabel = new JLabel("E-mail");
-        addressLabel = new JLabel("Address");
-        cityLabel = new JLabel("City");
-        postalCodeLabel = new JLabel("Postal Code");
-        streetLabel = new JLabel("Street");
+        JLabel nameLabel = new JLabel("Name");
+        nameLabel.setBorder(new EmptyBorder(0,0,5,0));
+        JLabel emailLabel = new JLabel("E-mail");
+        emailLabel.setBorder(new EmptyBorder(5,0,5,0));
+        JLabel cityLabel = new JLabel("City");
+        cityLabel.setBorder(new EmptyBorder(5,0,5,0));
+        JLabel postalCodeLabel = new JLabel("Postal Code");
+        postalCodeLabel.setBorder(new EmptyBorder(5,0,5,0));
+        JLabel streetLabel = new JLabel("Street");
+        streetLabel.setBorder(new EmptyBorder(5,0,5,0));
 
         nameTextField = new JTextField(10);
         emailTextField = new JTextField(10);
@@ -55,7 +57,6 @@ public class OrderForm extends JPanel {
         add(nameTextField);
         add(emailLabel);
         add(emailTextField);
-        add(addressLabel);
         add(cityLabel);
         add(cityTextField);
         add(postalCodeLabel);
@@ -65,11 +66,11 @@ public class OrderForm extends JPanel {
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-        setFont(new Font(getName(), Font.PLAIN, 6));
     }
 
     private void createComboBox() {
-        orderedItemLabel = new JLabel("Choose the item you want to order");
+        JLabel orderedItemLabel = new JLabel("Choose the item you want to order");
+        orderedItemLabel.setBorder(new EmptyBorder(15,0,5,0));
 
         DefaultComboBoxModel orderedItemName = new DefaultComboBoxModel();
         orderedItemName.addElement("");
@@ -85,13 +86,15 @@ public class OrderForm extends JPanel {
     }
 
     private void createRadioButtons() {
-        paymentMethodLabel = new JLabel("Choose payment method");
+        JLabel paymentMethodLabel = new JLabel("Choose payment method");
+        paymentMethodLabel.setBorder(new EmptyBorder(10,0,5,0));
 
         cash = new JRadioButton("Cash");
-        creditCard = new JRadioButton("Credit Card");
-        paymentMethodRadioButtons = new ButtonGroup();
+        JRadioButton creditCard = new JRadioButton("Credit Card");
+        ButtonGroup paymentMethodRadioButtons = new ButtonGroup();
         paymentMethodRadioButtons.add(cash);
         paymentMethodRadioButtons.add(creditCard);
+        creditCard.setBorder(new EmptyBorder(4,4,20,0));
 
         add(paymentMethodLabel);
         add(cash);
@@ -99,7 +102,7 @@ public class OrderForm extends JPanel {
     }
 
     private void createSubmitButton() {
-        submit = new JButton("Submit");
+        JButton submit = new JButton("Submit");
         submit.addActionListener(
                 new submitData());
         add(submit);
@@ -125,17 +128,18 @@ public class OrderForm extends JPanel {
 
         Dao<Order, Integer> orderDao = DaoManager.createDao(connectionSource, Order.class);
 
-        Customer customer = new Customer(nameTextField.getText(), emailTextField.getText());
         Address address = new Address(cityTextField.getText(), Integer.parseInt(postalCodeTextField.getText()),
                 streetTextField.getText());
+        Customer customer = new Customer(nameTextField.getText(), emailTextField.getText(), address);
+
 
         Order order;
         if(cash.isSelected()) {
             order = new Order(orderedItemCombo.getSelectedItem().toString(), "cash",
-                    customer, address);
+                    customer);
         } else {
             order = new Order(orderedItemCombo.getSelectedItem().toString(), "credit card",
-                    customer, address);
+                    customer);
         }
         orderDao.create(order);
     }
