@@ -1,13 +1,11 @@
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import lombok.NoArgsConstructor;
 
 /**
  * Created by Anna on 16/12/15.
  */
 
 @DatabaseTable
-//@NoArgsConstructor
 public class Address {
     @DatabaseField(generatedId = true)
     Integer addressID;
