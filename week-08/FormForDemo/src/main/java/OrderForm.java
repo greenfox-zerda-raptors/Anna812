@@ -31,6 +31,7 @@ public class OrderForm extends JPanel {
         frame.setResizable(true);
         frame.setVisible(true);
         frame.add(this);
+
         createFormLayout();
         createComboBox();
         createRadioButtons();
@@ -150,7 +151,6 @@ public class OrderForm extends JPanel {
                 streetTextField.getText());
         Customer customer = new Customer(nameTextField.getText(), emailTextField.getText(), address);
 
-
         Order order;
         if(cash.isSelected()) {
             order = new Order(orderedItemCombo.getSelectedItem().toString(), "cash",
@@ -159,6 +159,7 @@ public class OrderForm extends JPanel {
             order = new Order(orderedItemCombo.getSelectedItem().toString(), "credit card",
                     customer);
         }
+
         orderDao.create(order);
     }
 
