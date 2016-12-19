@@ -1,9 +1,7 @@
-package com.greenfoxacademy.springstart;
+package com.greenfoxacademy.springstart.controllers;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Anna on 16/12/19.
