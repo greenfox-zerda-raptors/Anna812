@@ -11,7 +11,19 @@ import java.util.concurrent.atomic.AtomicLong;
 @AllArgsConstructor
 @Getter
 public class Greeting {
-    AtomicLong id;
+    Long id;
     String content;
+
+    public Greeting(String content) {
+        this.content = content;
+    }
+
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public String getContent() {
+//        return content;
+//    }
 }
 
