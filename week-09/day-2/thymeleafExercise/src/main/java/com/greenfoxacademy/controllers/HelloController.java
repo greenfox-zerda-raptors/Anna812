@@ -1,4 +1,4 @@
-package com.greenfoxacademy;
+package com.greenfoxacademy.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
