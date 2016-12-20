@@ -1,8 +1,11 @@
 package com.greenfoxacademy.controllers;
 
+import com.greenfoxacademy.TodoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 /**
  * Created by Anna on 16/12/20.
@@ -10,10 +13,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "/todo")
 public class TodoController {
+    private TodoService todoService;
+
+    @Autowired
+    public TodoController(TodoService todoService){
+        this.todoService = todoService;
+    }
 
     @RequestMapping(value = "/list")
-    @ResponseBody
-    public void listToDos() {
-
+    public String listToDos(Model model) {
+        todoService = new TodoService();
+        model.addAttribute("todoService", todoService);
+        return "todo";
     }
 }
