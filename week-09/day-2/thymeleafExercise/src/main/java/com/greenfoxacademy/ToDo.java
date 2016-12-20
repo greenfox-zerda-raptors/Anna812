@@ -8,8 +8,8 @@ import lombok.Setter;
  * Created by Anna on 16/12/20.
  */
 @AllArgsConstructor
+@Getter
 public class Todo {
-    @Getter
     @Setter
     int id;
     String title;
