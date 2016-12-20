@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Anna on 16/12/20.
  */
 @Service
-public class TodoServices {
+public class TodoService {
     private List<Todo> fakeTodoStore = new ArrayList<Todo>(
             Arrays.asList(
                     new Todo(0, "Create an action", true, true),
