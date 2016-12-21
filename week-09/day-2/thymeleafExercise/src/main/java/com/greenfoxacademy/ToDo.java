@@ -3,6 +3,7 @@ package com.greenfoxacademy;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Created by Anna on 16/12/20.
@@ -19,5 +20,10 @@ public class Todo {
     public Todo(int id, String title) {
         this.id = id;
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 }

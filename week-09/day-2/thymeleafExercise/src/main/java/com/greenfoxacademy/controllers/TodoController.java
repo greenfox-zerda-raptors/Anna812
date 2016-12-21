@@ -22,8 +22,7 @@ public class TodoController {
 
     @RequestMapping(value = "/list")
     public String listToDos(Model model) {
-        todoService = new TodoService();
-        model.addAttribute("todoService", todoService);
+        model.addAttribute("todoList", todoService.getTodos());
         return "todo";
     }
 }
