@@ -1,10 +1,14 @@
 package com.greenfoxacademy.controllers;
 
+import com.greenfoxacademy.Todo;
 import com.greenfoxacademy.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
 
 
 /**
@@ -21,8 +25,18 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/list")
-    public String listToDos(Model model) {
-        model.addAttribute("todoList", todoService.getTodos());
+    public String listToDos(@RequestParam(required = false) String active, Model model) {
+        if (active != null) {
+            ArrayList<Todo> activeTodos = new ArrayList<>();
+            for (Todo temp : todoService.getTodos()) {
+                if(temp.isDone()) {
+                    activeTodos.add(temp);
+                }
+            }
+            model.addAttribute("todoList", activeTodos);
+        } else {
+            model.addAttribute("todoList", todoService.getTodos());
+        }
         return "todo";
     }
 }

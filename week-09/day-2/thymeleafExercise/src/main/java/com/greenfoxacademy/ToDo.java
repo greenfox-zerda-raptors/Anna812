@@ -3,7 +3,6 @@ package com.greenfoxacademy;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * Created by Anna on 16/12/20.
@@ -14,8 +13,8 @@ public class Todo {
     @Setter
     int id;
     String title;
-    Boolean isUrgent;
-    Boolean isDone;
+    boolean urgent;
+    boolean done;
 
     public Todo(int id, String title) {
         this.id = id;
@@ -25,5 +24,9 @@ public class Todo {
     @Override
     public String toString() {
         return title;
+    }
+
+    public boolean isDone() {
+        return done;
     }
 }

@@ -13,8 +13,8 @@ public class TodoService {
     private List<Todo> fakeTodoStore = new ArrayList<Todo>(
             Arrays.asList(
                     new Todo(0, "Create an action", true, true),
-                    new Todo(1, "Add @RequestMapping to it"),
-                    new Todo(2, "Return the viewName from the action")));
+                    new Todo(1, "Add @RequestMapping to it", false, false),
+                    new Todo(2, "Return the viewName from the action", false, true)));
 
     public List<Todo> getTodos() {
         return fakeTodoStore;
