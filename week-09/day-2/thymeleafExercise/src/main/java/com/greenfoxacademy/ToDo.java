@@ -21,11 +21,6 @@ public class Todo {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return title;
-    }
-
     public boolean isDone() {
         return done;
     }
