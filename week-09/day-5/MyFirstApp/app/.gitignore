@@ -1,0 +1,9 @@
+/build
+/*.gradle
+/*.pro
+*.png
+/src/main/res/values/*
+/src/main/res/values-w820dp/*
+/src/androidTest/*
+/src/test/*
+/src/main/AndroidManifest.xml
