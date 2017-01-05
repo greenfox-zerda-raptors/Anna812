@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>home page</title>
+</head>
+<body>
+    <a th:href="@{'/posts/add'}">Add new post</a>
+    <h1>Posts</h1>
+    <table>
+        <tr>
+            <th>SCORE</th>
+            <th colspan="2">Actions</th>
+            <th>Content</th>
+            <th>Creation Date</th>
+        </tr>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.score}">15</td>
+            <td><a th:href="@{'/posts/{id}/upvote'(id=${post.id})}">+</a></td>
+            <td><a th:href="@{'/posts/{id}/downvote'(id=${post.id})}">-</a></td>
+            <td th:text="${post.content}">content</td>
+            <td th:text="${#dates.format(post.creationDate,'yyyy/MM/dd HH:mm')}">2016/12/31 10:00</td>
+        </tr>
+    </table>
+    <a th:href="@{'/posts/previousPage'}">Previous</a>
+    <a th:href="@{'/posts?pageNumber=1'}">1</a>
+    <a th:href="@{'/posts?pageNumber=2'}">2</a>
+    <a th:href="@{'/posts?pageNumber=3'}">3</a>
+    <a th:href="@{'/posts?pageNumber=4'}">4</a>
+    <a th:href="@{'/posts/nextPage'}">Next</a>
+</body>
+</html>
