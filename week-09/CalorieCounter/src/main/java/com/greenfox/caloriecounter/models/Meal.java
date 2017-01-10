@@ -3,7 +3,6 @@ package com.greenfox.caloriecounter.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
