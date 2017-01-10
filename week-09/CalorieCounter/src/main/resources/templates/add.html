@@ -8,12 +8,12 @@
 <form th:action="@{'/save'}" th:object="${meal}" method="post">
     <div>
         <label>Date:</label>
-        <input type="datetime" th:field="*{created}"/>
+        <input type="date" th:field="*{created}"/>
     </div>
     <div>
         <label>Type:</label>
         <select th:field="*{type}">
-            <option value="">Select Author</option>
+            <option value=""></option>
             <option th:each="mealtype : ${mealtypes}" th:value="${mealtype.id}" th:text="${mealtype.name}"></option>
         </select>
     </div>
