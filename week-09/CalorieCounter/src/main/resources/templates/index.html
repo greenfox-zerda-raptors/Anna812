@@ -21,13 +21,16 @@
         <td th:text="${meal.type}">Lunch</td>
         <td th:text="${meal.description}">Pork Chop</td>
         <td th:text="${meal.calories}">1000</td>
-        <td><a th:href="@{'/posts/{id}/edit'(id=${meal.id})}">+</a></td>
-        <td><a th:href="@{'/posts/{id}/delete'(id=${meal.id})}">-</a></td>
+        <td><a th:href="@{'/posts/{id}/edit'(id=${meal.id})}">Edit</a></td>
+        <td><a th:href="@{'/posts/{id}/delete'(id=${meal.id})}">Delete</a></td>
     </tr>
 </table>
-<a th:href="@{'/posts/firstPage'}">First Page</a>
-<a th:href="@{'/posts/previousPage'}">Previous Page</a>
-<a th:href="@{'/posts/nextPage'}">Next Page</a>
-<a th:href="@{'/posts/lastPage'}">Last Page</a>
+<a th:href="@{'/posts/add'}">Add a new meal</a>
+<div>
+    <a th:href="@{'/posts/firstPage'}">First Page</a>
+    <a th:href="@{'/posts/previousPage'}">Previous Page</a>
+    <a th:href="@{'/posts/nextPage'}">Next Page</a>
+    <a th:href="@{'/posts/lastPage'}">Last Page</a>
+</div>
 </body>
 </html>

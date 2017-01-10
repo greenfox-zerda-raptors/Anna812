@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>add meal</title>
+</head>
+<body>
+<form th:action="@{'/save'}" th:object="${meal}" method="post">
+    <div>
+        <label>Date:</label>
+        <input type="datetime" th:field="*{created}" />
+    </div>
+    <div>
+        <label>Type:</label>
+        <select th:field="*{type}">
+            <option value="">Select Author</option>
+            <option th:each="mealtype : ${mealtypes}" th:value="${mealtype.id}" th:text="${mealtype.name}"></option>
+        </select>
+    </div>
+    <div>
+        <label>Description:</label>
+        <textarea rows="3" th:field="*{description}"></textarea>
+    </div>
+    <div>
+        <label>Calories:</label>
+        <input type="text" th:field="*{calories}" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+</body>
+</html>

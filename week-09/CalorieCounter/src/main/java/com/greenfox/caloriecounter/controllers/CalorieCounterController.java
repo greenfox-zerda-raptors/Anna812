@@ -20,4 +20,9 @@ public class CalorieCounterController {
         model.addAttribute("meals", mealService.list());
         return "index";
     }
+
+    @RequestMapping("/add")
+    public String add() {
+        return "add";
+    }
 }
