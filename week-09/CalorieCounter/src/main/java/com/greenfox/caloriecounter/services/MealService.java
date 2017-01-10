@@ -22,4 +22,8 @@ public class MealService {
     public void saveMeal(Meal meal) {
         repository.save(meal);
     }
+
+    public Meal find(long id) {
+        return repository.findOne(id);
+    }
 }
