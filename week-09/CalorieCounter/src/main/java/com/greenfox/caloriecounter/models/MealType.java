@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Anna on 17/01/10.
@@ -19,4 +20,6 @@ public class MealType {
     @GeneratedValue
     private long id;
     private String name;
+    @OneToMany(mappedBy = "type")
+    private List<Meal> meals;
 }

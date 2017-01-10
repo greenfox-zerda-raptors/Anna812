@@ -19,9 +19,9 @@ public class Meal {
     private long id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "mealtype_id")
-    private String type;
+    private MealType type;
     private String description;
     private int calories;
 
