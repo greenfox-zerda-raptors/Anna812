@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>home page</title>
+</head>
+<body>
+<div th:method="delete">
+    <p th:text="'Do you really want to delete your ' + ${meal} +'?'">Do you really want to delete meal?</p>
+    <a th:href="@{'/delete'(id=${meal.id})}">Yes</a>
+    <a th:href="@{'/index'}">No</a>
+</div>
+</body>
+</html>
