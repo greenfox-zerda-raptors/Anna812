@@ -6,10 +6,7 @@ import com.greenfox.caloriecounter.services.MealTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Anna on 17/01/10.
@@ -39,5 +36,12 @@ public class CalorieCounterController {
     public String save(@ModelAttribute Meal meal) {
         mealService.saveMeal(meal);
         return "redirect:/index";
+    }
+
+    @RequestMapping("{id}/edit")
+    public String edit(@PathVariable long id, Model model) {
+        model.addAttribute("meal", mealService.find(id));
+        model.addAttribute("mealtypes", mealTypeService.list());
+        return "add";
     }
 }
