@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by Anna on 17/01/10.
@@ -17,8 +16,7 @@ public class Meal {
     @Id
     @GeneratedValue
     private long id;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    private String created;
     @ManyToOne
     @JoinColumn(name = "mealtype_id")
     private MealType type;
@@ -26,6 +24,5 @@ public class Meal {
     private int calories;
 
     public Meal() {
-        created = new Date();
     }
 }

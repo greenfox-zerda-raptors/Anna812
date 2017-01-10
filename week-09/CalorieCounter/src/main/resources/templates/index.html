@@ -16,8 +16,8 @@
         <th colspan="2">Actions</th>
     </tr>
     <tr th:each="meal : ${meals}">
-        <td th:text="${mealStat}"></td>
-        <td th:text="${#dates.format(meal.created,'yyyy/MM/dd HH:mm')}">2016/12/31 10:00</td>
+        <td th:text="${mealStat.count}"></td>
+        <td th:text="${meal.created}">2016/12/31 10:00</td>
         <td th:text="${meal.type}">Lunch</td>
         <td th:text="${meal.description}">Pork Chop</td>
         <td th:text="${meal.calories}">1000</td>
