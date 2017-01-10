@@ -7,6 +7,9 @@
 <body>
 <form th:action="@{'/save'}" th:object="${meal}" method="post">
     <div>
+        <input type="hidden" th:field="*{id}"/>
+    </div>
+    <div>
         <label>Date:</label>
         <input type="date" th:field="*{created}"/>
     </div>
