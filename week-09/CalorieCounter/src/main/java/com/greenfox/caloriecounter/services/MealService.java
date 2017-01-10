@@ -18,4 +18,8 @@ public class MealService {
     public Iterable<Meal> list() {
         return repository.findAll();
     }
+
+    public void saveMeal(Meal meal) {
+        repository.save(meal);
+    }
 }
