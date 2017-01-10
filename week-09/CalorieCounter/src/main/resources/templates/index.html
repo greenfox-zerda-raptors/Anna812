@@ -22,7 +22,7 @@
         <td th:text="${meal.description}">Pork Chop</td>
         <td th:text="${meal.calories}">1000</td>
         <td><a th:href="@{'{id}/edit'(id=${meal.id})}">Edit</a></td>
-        <td><a th:href="@{'{id}/delete'(id=${meal.id})}">Delete</a></td>
+        <td><a th:href="@{'{id}/start-delete'(id=${meal.id})}">Delete</a></td>
     </tr>
 </table>
 <a th:href="@{'/add'}">Add a new meal</a>

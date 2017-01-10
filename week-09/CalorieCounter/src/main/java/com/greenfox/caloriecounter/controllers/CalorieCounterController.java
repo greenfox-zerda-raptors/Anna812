@@ -44,4 +44,16 @@ public class CalorieCounterController {
         model.addAttribute("mealtypes", mealTypeService.list());
         return "add";
     }
+
+    @RequestMapping("{id}/start-delete")
+    public String askConfirmation(@PathVariable long id, Model model) {
+        model.addAttribute("meal", mealService.find(id));
+        return "confirm_deletion";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(@RequestParam long id) {
+        mealService.delete(id);
+        return "redirect:/index";
+    }
 }
