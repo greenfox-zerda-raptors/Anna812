@@ -26,4 +26,8 @@ public class MealService {
     public Meal find(long id) {
         return repository.findOne(id);
     }
+
+    public void delete(long id) {
+        repository.delete(id);
+    }
 }
