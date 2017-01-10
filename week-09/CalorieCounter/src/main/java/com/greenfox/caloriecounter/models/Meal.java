@@ -1,6 +1,7 @@
 package com.greenfox.caloriecounter.models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Table(name = "meals")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Meal {
     @Id
     @GeneratedValue
@@ -22,7 +24,4 @@ public class Meal {
     private MealType type;
     private String description;
     private int calories;
-
-    public Meal() {
-    }
 }

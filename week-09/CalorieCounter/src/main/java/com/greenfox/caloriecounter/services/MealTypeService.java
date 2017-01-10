@@ -1,6 +1,5 @@
 package com.greenfox.caloriecounter.services;
 
-import com.greenfox.caloriecounter.models.Meal;
 import com.greenfox.caloriecounter.models.MealType;
 import com.greenfox.caloriecounter.repos.MealTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
