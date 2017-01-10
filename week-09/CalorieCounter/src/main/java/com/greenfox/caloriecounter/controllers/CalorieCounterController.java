@@ -19,9 +19,21 @@ public class CalorieCounterController {
     @Autowired
     MealTypeService mealTypeService;
 
+    @RequestMapping("")
+    public String home() {
+        return "redirect:/index/0";
+    }
+
     @RequestMapping("/index")
-    public String index(Model model) {
-        model.addAttribute("meals", mealService.list());
+    public String index() {
+        return "redirect:/index/0";
+    }
+
+
+    @RequestMapping("/index/{pageNumber}")
+    public String getPage(Model model, @PathVariable int pageNumber,
+                          @RequestParam(defaultValue = "10") int limit) {
+        model.addAttribute("meals", mealService.listPage(pageNumber, limit));
         return "index";
     }
 
@@ -35,7 +47,7 @@ public class CalorieCounterController {
     @PostMapping("/save")
     public String save(@ModelAttribute Meal meal) {
         mealService.saveMeal(meal);
-        return "redirect:/index";
+        return "redirect:/index/0";
     }
 
     @RequestMapping("{id}/edit")
@@ -54,6 +66,6 @@ public class CalorieCounterController {
     @RequestMapping("/delete")
     public String delete(@RequestParam long id) {
         mealService.delete(id);
-        return "redirect:/index";
+        return "redirect:/index/0";
     }
 }
