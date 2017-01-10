@@ -1,9 +1,12 @@
 package com.greenfox.caloriecounter.controllers;
 
+import com.greenfox.caloriecounter.models.Meal;
 import com.greenfox.caloriecounter.services.MealService;
+import com.greenfox.caloriecounter.services.MealTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -14,6 +17,8 @@ public class CalorieCounterController {
 
     @Autowired
     MealService mealService;
+    @Autowired
+    MealTypeService mealTypeService;
 
     @RequestMapping("/index")
     public String index(Model model) {
@@ -22,7 +27,15 @@ public class CalorieCounterController {
     }
 
     @RequestMapping("/add")
-    public String add() {
+    public String add(Model model) {
+        model.addAttribute("mealtypes", mealTypeService.list());
+        model.addAttribute("meal", new Meal());
         return "add";
+    }
+
+    @RequestMapping("/save")
+    public String save(@ModelAttribute Meal meal) {
+        mealService.saveMeal(meal);
+        return "redirect:/index";
     }
 }
