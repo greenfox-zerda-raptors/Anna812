@@ -5,6 +5,29 @@
     <title>home page</title>
 </head>
 <body>
-
+<h1>Calorie Counter App</h1>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Calories</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    <tr th:each="meal : ${meals}">
+        <td th:text="${mealStat}"></td>
+        <td th:text="${#dates.format(meal.created,'yyyy/MM/dd HH:mm')}">2016/12/31 10:00</td>
+        <td th:text="${meal.type}">Lunch</td>
+        <td th:text="${meal.description}">Pork Chop</td>
+        <td th:text="${meal.calories}">1000</td>
+        <td><a th:href="@{'/posts/{id}/edit'(id=${meal.id})}">+</a></td>
+        <td><a th:href="@{'/posts/{id}/delete'(id=${meal.id})}">-</a></td>
+    </tr>
+</table>
+<a th:href="@{'/posts/firstPage'}">First Page</a>
+<a th:href="@{'/posts/previousPage'}">Previous Page</a>
+<a th:href="@{'/posts/nextPage'}">Next Page</a>
+<a th:href="@{'/posts/lastPage'}">Last Page</a>
 </body>
 </html>
