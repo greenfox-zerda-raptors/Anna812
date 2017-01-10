@@ -2,35 +2,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../static/css/bootstrap-theme.min.css" rel="stylesheet" />
     <title>home page</title>
 </head>
 <body>
 <h1>Calorie Counter App</h1>
-<table>
-    <tr>
-        <th>#</th>
-        <th>Date</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Calories</th>
-        <th colspan="2">Actions</th>
-    </tr>
-    <tr th:each="meal : ${meals}">
-        <td th:text="${mealStat.count}"></td>
-        <td th:text="${meal.created}">2016/12/31 10:00</td>
-        <td th:text="${meal.type.getName()}">Lunch</td>
-        <td th:text="${meal.description}">Pork Chop</td>
-        <td th:text="${meal.calories}">1000</td>
-        <td><a th:href="@{'{id}/edit'(id=${meal.id})}">Edit</a></td>
-        <td><a th:href="@{'{id}/start-delete'(id=${meal.id})}">Delete</a></td>
-    </tr>
-</table>
-<a th:href="@{'/add'}">Add a new meal</a>
+<div style="width:600px">
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Calories</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        <tr th:each="meal : ${meals}">
+            <td th:text="${mealStat.count}"></td>
+            <td th:text="${meal.created}">2016/12/31 10:00</td>
+            <td th:text="${meal.type.getName()}">Lunch</td>
+            <td th:text="${meal.description}">Pork Chop</td>
+            <td th:text="${meal.calories}">1000</td>
+            <td><a th:href="@{'{id}/edit'(id=${meal.id})}">Edit</a></td>
+            <td><a th:href="@{'{id}/start-delete'(id=${meal.id})}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<a type="button" class="btn btn-m btn-info" th:href="@{'/add'}">Add a new meal</a>
 <div>
-    <a th:href="@{'/firstPage'}">First Page</a>
-    <a th:href="@{'/previousPage'}">Previous Page</a>
-    <a th:href="@{'/nextPage'}">Next Page</a>
-    <a th:href="@{'/lastPage'}">Last Page</a>
+    <a type="button" class="btn btn-sm btn-success" th:if="${meals.getNumber()}!=0" th:href="@{'/index/0?limit=' + ${meals.getSize()}}">First Page</a>
+    <a type="button" class="btn btn-sm btn-success" th:if="${meals.hasPrevious()}" th:href="@{'/index/' + ${meals.getNumber()-1} +
+    '?limit=' + ${meals.getSize()}}">Previous Page</a>
+    <a type="button" class="btn btn-sm btn-success" th:if="${meals.hasNext()}" th:href="@{'/index/' + ${meals.getNumber()+1} +
+    '?limit=' + ${meals.getSize()}}">Next Page</a>
+    <a type="button" class="btn btn-sm btn-success" th:if="${meals.getTotalPages()-1} != ${meals.getNumber()}"  th:href="@{'/index/' + ${meals.getTotalPages()-1} +
+    '?limit=' + ${meals.getSize()}}">Last Page</a>
 </div>
 </body>
 </html>
