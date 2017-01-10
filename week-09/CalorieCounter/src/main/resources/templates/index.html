@@ -18,11 +18,11 @@
     <tr th:each="meal : ${meals}">
         <td th:text="${mealStat.count}"></td>
         <td th:text="${meal.created}">2016/12/31 10:00</td>
-        <td th:text="${meal.type}">Lunch</td>
+        <td th:text="${meal.type.getName()}">Lunch</td>
         <td th:text="${meal.description}">Pork Chop</td>
         <td th:text="${meal.calories}">1000</td>
-        <td><a th:href="@{'/posts/{id}/edit'(id=${meal.id})}">Edit</a></td>
-        <td><a th:href="@{'/posts/{id}/delete'(id=${meal.id})}">Delete</a></td>
+        <td><a th:href="@{'{id}/edit'(id=${meal.id})}">Edit</a></td>
+        <td><a th:href="@{'{id}/delete'(id=${meal.id})}">Delete</a></td>
     </tr>
 </table>
 <a th:href="@{'/add'}">Add a new meal</a>
