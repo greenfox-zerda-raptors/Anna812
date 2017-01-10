@@ -1,7 +1,6 @@
 package com.greenfox.anna.reddit.models;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -25,6 +24,9 @@ public class Post {
     private int score;
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Post() {
         creationDate = new Date();
@@ -37,6 +39,4 @@ public class Post {
     public void decrementScore() {
         score--;
     }
-
-
 }

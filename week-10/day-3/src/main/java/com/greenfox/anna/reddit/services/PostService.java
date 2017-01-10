@@ -4,7 +4,8 @@ import com.greenfox.anna.reddit.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
+
+import java.util.List;
 
 /**
  * Created by Anna on 17/01/05.
@@ -16,11 +17,15 @@ public class PostService {
     private PostRepository repository;
     private PagedListHolder<Post> pages;
 
-    public void listPosts(int pageNumber, Model model) {
+    public List<Post> listPosts(int pageNumber) {
         pages = new PagedListHolder<>(repository.findAllByOrderByScoreDesc());
         pages.setPageSize(10);
         pages.setPage(pageNumber-1);
-        model.addAttribute("posts", pages.getPageList());
+        return pages.getPageList();
+    }
+
+    public List<Post> listUserPosts(long userId) {
+        return repository.findAllByUserUserId(userId);
     }
 
     public void savePost(Post post) {
@@ -39,12 +44,6 @@ public class PostService {
         savePost(post);
     }
 
-
-    public void listTop10Posts(Model model) {
-        model.addAttribute("posts", repository.findTop10ByOrderByScoreDesc());
-    }
-
-
     public int getPreviousPageNumber() {
         return pages.getPage();
     }
@@ -52,4 +51,5 @@ public class PostService {
     public int getNextPageNumber() {
         return pages.getPage() + 2;
     }
+
 }
