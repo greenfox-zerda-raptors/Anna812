@@ -1,37 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="main">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../../../css/theme.css" rel="stylesheet" />
     <title>add meal</title>
 </head>
 <body>
-<form th:action="@{'/save'}" th:object="${meal}" method="post">
+<div class="bs-example" data-example-id="basic-forms">
+<form layout:fragment="content" th:action="@{'/save'}" th:object="${meal}" method="post">
     <div>
         <input type="hidden" th:field="*{id}"/>
     </div>
-    <div>
+    <div class="form-group">
         <label>Date:</label>
-        <input type="date" th:field="*{created}"/>
+        <input class="form-control" type="date" th:field="*{created}"/>
     </div>
-    <div>
+    <div class="form-group">
         <label>Type:</label>
-        <select th:field="*{type}">
+        <select class="form-control" th:field="*{type}">
             <option value=""></option>
             <option th:each="mealtype : ${mealtypes}" th:value="${mealtype.id}" th:text="${mealtype.name}"></option>
         </select>
     </div>
-    <div>
+    <div class="form-group">
         <label>Description:</label>
-        <textarea rows="3" th:field="*{description}"></textarea>
+        <textarea class="form-control" rows="3" th:field="*{description}"></textarea>
     </div>
-    <div>
+    <div class="form-group">
         <label>Calories:</label>
-        <input type="text" th:field="*{calories}" />
+        <input class="form-control" type="text" th:field="*{calories}" />
     </div>
     <div>
-        <input type="submit" value="Submit" />
-        <a th:href="@{'/index'}">Cancel</a>
+        <button type="submit" class="btn btn-sm btn-success">Submit</button>
+        <a type="button" class="btn btn-sm btn-danger" th:href="@{'/index'}">Cancel</a>
     </div>
 </form>
+</div>
 </body>
 </html>

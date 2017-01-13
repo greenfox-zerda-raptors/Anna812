@@ -29,10 +29,9 @@ public class CalorieCounterController {
         return "redirect:/index/0";
     }
 
-
     @RequestMapping("/index/{pageNumber}")
     public String getPage(Model model, @PathVariable int pageNumber,
-                          @RequestParam(defaultValue = "10") int limit) {
+                          @RequestParam(defaultValue = "5") int limit) {
         model.addAttribute("meals", mealService.listPage(pageNumber, limit));
         return "index";
     }
@@ -50,14 +49,14 @@ public class CalorieCounterController {
         return "redirect:/index/0";
     }
 
-    @RequestMapping("{id}/edit")
+    @RequestMapping("/{id}/edit")
     public String edit(@PathVariable long id, Model model) {
         model.addAttribute("meal", mealService.find(id));
         model.addAttribute("mealtypes", mealTypeService.list());
         return "add";
     }
 
-    @RequestMapping("{id}/start-delete")
+    @RequestMapping("/{id}/start-delete")
     public String askConfirmation(@PathVariable long id, Model model) {
         model.addAttribute("meal", mealService.find(id));
         return "confirm_deletion";

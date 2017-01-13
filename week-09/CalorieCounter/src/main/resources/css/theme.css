@@ -1,0 +1,51 @@
+body {
+    background-image: url("../static/mvf.jpg");
+    background-size: 30%;
+}
+
+.main-wrapper {
+    background-color: whitesmoke;
+    margin: 0 auto;
+    width: 630px;
+    height: 800px;
+    padding: 15px;
+}
+
+h1 {
+    margin: 0px 135px 20px;
+    webkit-margin-before: 0px;
+    color: #449d44;
+}
+
+.table {
+    border: 2px solid #e2e2e2;
+}
+
+.btn-m {
+    margin: 15px 240px;
+}
+
+.btn-sm {
+    margin: 0px 5px;
+}
+
+.btn-lg {
+    margin: 20px 110px;
+}
+
+.pagination {
+    margin: 0px 110px;
+    display: flex;
+}
+
+.not-active {
+    background-image: none;
+    background-color: #7cbf81;
+}
+
+.not-active:hover {
+    background-color: #7cbf81;
+    margin: 0px 5px;
+}
+
+
