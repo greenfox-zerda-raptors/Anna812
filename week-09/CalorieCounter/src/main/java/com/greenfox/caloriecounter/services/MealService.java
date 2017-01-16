@@ -16,10 +16,6 @@ public class MealService {
     @Autowired
     MealRepository repository;
 
-    public Iterable<Meal> list() {
-        return repository.findAll();
-    }
-
     public Page<Meal> listPage(int pageNumber, int limit) {
         return repository.findAll(new PageRequest(pageNumber, limit));
     }
