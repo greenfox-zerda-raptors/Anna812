@@ -12,10 +12,12 @@ public class finalExam {
     }
 
     public static int[] mixTwoArrays(int[] one, int[] two) {
+        int j = 0;
         int[] result =  new int[one.length + two.length];
         for (int i = 0; i < one.length; i++){
-            result[i] = one[i];
-            result[ i + 1 ] = two[i];
+            result[j] = one[i];
+            result[ j + 1 ] = two[i];
+            j += 2;
         }
         return result;
     }
