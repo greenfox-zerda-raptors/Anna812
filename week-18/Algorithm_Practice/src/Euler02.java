@@ -3,17 +3,19 @@
  */
 public class Euler02 {
     public static void main(String[] args) {
-        System.out.println(sumOfFibonacciEvenNums(33));
+        System.out.println(sumOfFibonacciEvenNums());
     }
 
-    private static int sumOfFibonacciEvenNums(int limit) {
+    private static int sumOfFibonacciEvenNums() {
         int sum = 0;
-        int fibValue;
-        for (int i = 0; i <= limit; i++){
-            fibValue = fibonacci(i);
+        int fibValue = 0;
+        int count = 0;
+        while (fibValue <= 4000000) {
+            fibValue = fibonacci(count);
             if(fibValue % 2 == 0) {
                 sum += fibValue;
             }
+            count++;
         }
         return sum;
     }
