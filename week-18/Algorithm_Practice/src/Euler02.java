@@ -11,11 +11,8 @@ public class Euler02 {
     }
 
     private static int fibonacci(int limit) {
-            if(limit == 0) {
-                return 0;
-            }
-            if(limit == 1) {
-                return 1;
+            if(limit < 1) {
+                return limit;
             } else {
                 return fibonacci(limit - 2) + fibonacci(limit - 1);
             }
