@@ -3,18 +3,26 @@
  */
 public class Euler02 {
     public static void main(String[] args) {
-        fibonacci(6);
+        System.out.println(sumOfFibonacciEvenNums(33));
     }
 
     private static int sumOfFibonacciEvenNums(int limit) {
-        return 0;
+        int sum = 0;
+        int fibValue;
+        for (int i = 0; i <= limit; i++){
+            fibValue = fibonacci(i);
+            if(fibValue % 2 == 0) {
+                sum += fibValue;
+            }
+        }
+        return sum;
     }
 
-    private static int fibonacci(int limit) {
-            if(limit < 1) {
-                return limit;
-            } else {
-                return fibonacci(limit - 2) + fibonacci(limit - 1);
-            }
+    private static int fibonacci(int index) {
+        if(index <= 1) {
+            return index;
+        } else {
+            return fibonacci(index - 2) + fibonacci(index - 1);
+        }
     }
 }
